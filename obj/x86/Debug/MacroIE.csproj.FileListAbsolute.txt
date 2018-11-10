@@ -1,0 +1,20 @@
+c:\users\ale\documents\visual studio 2010\Projects\MacroIE\MacroIE\bin\Debug\MacroIE.exe
+c:\users\ale\documents\visual studio 2010\Projects\MacroIE\MacroIE\bin\Debug\MacroIE.pdb
+c:\users\ale\documents\visual studio 2010\Projects\MacroIE\MacroIE\obj\x86\Debug\MacroIE.Form1.resources
+c:\users\ale\documents\visual studio 2010\Projects\MacroIE\MacroIE\obj\x86\Debug\MacroIE.Properties.Resources.resources
+c:\users\ale\documents\visual studio 2010\Projects\MacroIE\MacroIE\obj\x86\Debug\MacroIE.csproj.GenerateResource.Cache
+c:\users\ale\documents\visual studio 2010\Projects\MacroIE\MacroIE\obj\x86\Debug\MacroIE.exe
+c:\users\ale\documents\visual studio 2010\Projects\MacroIE\MacroIE\obj\x86\Debug\MacroIE.pdb
+C:\Users\ALE\Documents\Visual Studio 2010\Projects\MacroIE\MacroIE\obj\x86\Debug\MacroIE.csprojResolveAssemblyReference.cache
+C:\Users\ALE\documents\visual studio 2010\Projects\MacroIE\MacroIE\obj\x86\Debug\MacroIE.Form2.resources
+H:\MacroIE\MacroIE\MacroIE\obj\x86\Debug\MacroIE.exe
+H:\MacroIE\MacroIE\MacroIE\obj\x86\Debug\MacroIE.pdb
+C:\TMP\MacroIE\MacroIE\MacroIE\obj\x86\Debug\MacroIE.Form1.resources
+C:\TMP\MacroIE\MacroIE\MacroIE\obj\x86\Debug\MacroIE.frmMain.resources
+C:\TMP\MacroIE\MacroIE\MacroIE\obj\x86\Debug\MacroIE.csproj.GenerateResource.Cache
+C:\TMP\MacroIE\MacroIE\MacroIE\bin\Debug\VMS.exe
+C:\TMP\MacroIE\MacroIE\MacroIE\bin\Debug\VMS.pdb
+C:\TMP\MacroIE\MacroIE\MacroIE\obj\x86\Debug\VMS.Properties.Resources.resources
+C:\TMP\MacroIE\MacroIE\MacroIE\obj\x86\Debug\VMS.exe
+C:\TMP\MacroIE\MacroIE\MacroIE\obj\x86\Debug\VMS.pdb
+C:\TMP\MacroIE\MacroIE\MacroIE\bin\Debug\VMS.exe.config

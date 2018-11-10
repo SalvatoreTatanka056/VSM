@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017 bis\professional\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE\bin\x64\Debug\VMS.exe">
+   <Modules>
+    <Module Name="vms.exe">
+     <Namespaces>
+      <Namespace Name="VMS">
+       <Types>
+        <Type Name="FindAndReplaceForm" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="_search" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="FindAndReplaceForm.designer.cs" Line="15">'FindAndReplaceForm' contiene il campo 'FindAndReplaceForm._search' di tipo IDisposable: 'TextEditorSearcher'. Modificare il metodo Dispose di 'FindAndReplaceForm' in modo che chiami Dispose o Close su questo campo.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="frmMain" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#EseguiMacro()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Non eliminare gli oggetti più volte" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="frmMain.cs" Line="142">L'oggetto 'proc' può essere eliminato più volte nel metodo 'frmMain.EseguiMacro()'. Per evitare di generare System.ObjectDisposedException, è consigliabile chiamare Dispose su un oggetto non più di una volta.: Lines: 142, 342</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="frmMain.cs" Line="280">L'oggetto 'sr' può essere eliminato più volte nel metodo 'frmMain.EseguiMacro()'. Per evitare di generare System.ObjectDisposedException, è consigliabile chiamare Dispose su un oggetto non più di una volta.: Lines: 280</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#mouse_event(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Poiché si tratta di un metodo P/Invoke, 'frmMain.mouse_event(int, int, int, int, int)' deve essere definito in una classe chiamata NativeMethods, SafeNativeMethods o UnsafeNativeMethods.</Issue>
+            </Message>
+            <Message Id="4" TypeName="PInvokeDeclarationsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1901" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Name="Parameter" Certainty="95" Level="Error">In base alla dichiarazione presente nel codice, il parametro 'dwExtraInfo' di P/Invoke 'frmMain.mouse_event(int, int, int, int, int)' sarà di 4 byte sulle piattaforme 64 bit. Ciò non è corretto in quanto l'effettiva dichiarazione nativa dell'API indica che deve essere di 8 byte sulle piattaforme 64 bit. Consultare la documentazione MSDN Platform SDK per determinare il tipo di dati da utilizzare al posto di 'int'.</Issue>
+            </Message>
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="CriticalError">Modificare l'accessibilità di P/Invoke 'frmMain.mouse_event(int, int, int, int, int)' in modo che non sia più visibile dall'esterno degli assembly.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ProcessCmdKey(System.Windows.Forms.Message&amp;,System.Windows.Forms.Keys)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="frmMain.cs" Line="442">'frmMain.ProcessCmdKey(ref Message, Keys)' effettua la chiamata a 'Form.ProcessCmdKey(ref Message, Keys)' che include un oggetto LinkDemand. Con la chiamata, 'Form.ProcessCmdKey(ref Message, Keys)' viene esposto in modo indiretto al codice utente. Controllare lo stack di chiamate seguente che potrebbe esporre un modo per aggirare il sistema di sicurezza: &#xD;&#xA;   -&gt;'frmMain.ProcessCmdKey(ref Message, Keys)'&#xD;&#xA;   -&gt;'frmMain.ProcessCmdKey(ref Message, Keys)'</Issue>
+            </Message>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="frmMain.cs" Line="442">Aggiungere il seguente attributo di sicurezza a 'frmMain.ProcessCmdKey(ref Message, Keys)' per creare la corrispondenza con un LinkDemand nel metodo di base 'Form.ProcessCmdKey(ref Message, Keys)': [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)].</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetCursorPos(System.Int32,System.Int32)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Poiché si tratta di un metodo P/Invoke, 'frmMain.SetCursorPos(int, int)' deve essere definito in una classe chiamata NativeMethods, SafeNativeMethods o UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="HighlightGroup" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+           <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Fornire un'implementazione sottoponibile a override di Dispose(bool) su 'HighlightGroup' o contrassegnare il tipo come sealed. Una chiamata a Dispose(false) pulisce solo le risorse native. Una chiamata a Dispose(true) pulisce le risorse native e quelle gestite.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Dispose()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="FindAndReplaceForm.cs" Line="470">Modificare 'HighlightGroup.Dispose()' in modo che chiami Dispose(true), quindi GC.SuppressFinalize nell'istanza dell'oggetto corrente ('this' o 'Me' in Visual Basic) e quindi esca dalla funzione.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Finalize()" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Name="FinalizeImplementation" Certainty="95" Level="Error" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="FindAndReplaceForm.cs" Line="471">Modificare 'HighlightGroup.~HighlightGroup()' in modo che chiami Dispose(false) e quindi esca dalla funzione.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="TestFormComponent" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Stop()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Non eliminare gli oggetti più volte" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="TestFormComponent.cs" Line="71">L'oggetto 'this' può essere eliminato più volte nel metodo 'TestFormComponent.Stop()'. Per evitare di generare System.ObjectDisposedException, è consigliabile chiamare Dispose su un oggetto non più di una volta.: Lines: 71</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="TextEditorSearcher" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+           <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Fornire un'implementazione sottoponibile a override di Dispose(bool) su 'TextEditorSearcher' o contrassegnare il tipo come sealed. Una chiamata a Dispose(false) pulisce solo le risorse native. Una chiamata a Dispose(true) pulisce le risorse native e quelle gestite.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Dispose()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="FindAndReplaceForm.cs" Line="317">Modificare 'TextEditorSearcher.Dispose()' in modo che chiami Dispose(true), quindi GC.SuppressFinalize nell'istanza dell'oggetto corrente ('this' o 'Me' in Visual Basic) e quindi esca dalla funzione.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Finalize()" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2018-11-09 11:31:05Z" FixCategory="Breaking">
+             <Issue Name="FinalizeImplementation" Certainty="95" Level="Error" Path="C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE" File="FindAndReplaceForm.cs" Line="318">Modificare 'TextEditorSearcher.~TextEditorSearcher()' in modo che chiami Dispose(false) e quindi esca dalla funzione.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="VMS.Properties">
+       <Types>
+        <Type Name="Resources" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="ExcludedInSource" Created="2018-11-09 11:31:05Z" FixCategory="NonBreaking" LastSeen="0001-01-01 00:00:00Z" />
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Evitare il codice privato non chiamato</Name>
+   <Description>È presente un codice non chiamato che non è visibile esternamente e non è un punto di ingresso riconosciuto in fase di esecuzione. Se questa violazione genera un errore, inviare la segnalazione del problema al team dell'analisi codice di Visual Studio.</Description>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182264.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213">
+   <Name>I campi eliminabili devono essere eliminati</Name>
+   <Description>Se un tipo che implementa IDisposable è proprietario di campi che a loro volta implementano IDisposable, l'implementazione Dispose() del tipo incapsulante deve chiamare Dispose() su ogni campo eliminabile.</Description>
+   <Resolution Name="Default">{0} contiene il campo {1} di tipo IDisposable: {2}. Modificare il metodo Dispose di {0} in modo che chiami Dispose o Close su questo campo.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182328.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122">
+   <Name>Non esporre in modo indiretto metodi con richieste di collegamento</Name>
+   <Description>Non eseguire il wrapping di un metodo protetto da un elemento LinkDemand con un metodo che non esegue controlli di sicurezza. Un elemento LinkDemand verifica le autorizzazioni del chiamante immediato invece di quelle di tutti i chiamanti nello stack di chiamate. In questo caso, verranno verificate le autorizzazioni del metodo wrapper. Se il metodo wrapper non verifica a sua volta le autorizzazioni dei chiamanti di livello superiore nello stack, la funzione di cui è stato eseguito il wrapping potrebbe essere eseguita da codice dannoso anche se privo dell'autorizzazione appropriata.</Description>
+   <Resolution Name="Default">{0} effettua la chiamata a {1} che include un oggetto LinkDemand. Con la chiamata, {1} viene esposto in modo indiretto al codice utente. Controllare lo stack di chiamate seguente che potrebbe esporre un modo per aggirare il sistema di sicurezza: {2}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182303.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="securityrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
+   <Name>Implementare IDisposable correttamente</Name>
+   <Description>Tutti i tipi IDisposable devono correttamente implementare il modello Dispose.</Description>
+   <Resolution Name="DisposeImplementation">Modificare {0} in modo che chiami Dispose(true), quindi GC.SuppressFinalize nell'istanza dell'oggetto corrente ('this' o 'Me' in Visual Basic) e quindi esca dalla funzione.</Resolution>
+   <Resolution Name="FinalizeImplementation">Modificare {0} in modo che chiami Dispose(false) e quindi esca dalla funzione.</Resolution>
+   <Resolution Name="ProvideDisposeBool">Fornire un'implementazione sottoponibile a override di Dispose(bool) su {0} o contrassegnare il tipo come sealed. Una chiamata a Dispose(false) pulisce solo le risorse native. Una chiamata a Dispose(true) pulisce le risorse native e quelle gestite.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms244737.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060">
+   <Name>Spostare i P/Invoke nella classe NativeMethods</Name>
+   <Description>Questo tipo contiene membri con l'attributo DllImport. I membri con l'attributo DllImport devono essere contenuti in classi chiamate NativeMethods, SafeNativeMethods o UnsafeNativeMethods.</Description>
+   <Resolution Name="Default">Poiché si tratta di un metodo P/Invoke, {0} deve essere definito in una classe chiamata NativeMethods, SafeNativeMethods o UnsafeNativeMethods.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182161.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Non eliminare gli oggetti più volte" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Non eliminare gli oggetti più volte</Name>
+   <Description>È possibile chiamare più volte un metodo Dispose implementato in modo corretto senza che vengano generate eccezioni. Poiché tuttavia tale risultato non è garantito, per evitare di generare System.ObjectDisposedException è consigliabile chiamare Dispose su un oggetto non più di una volta.</Description>
+   <Resolution Name="Default">L'oggetto {0} può essere eliminato più volte nel metodo {1}. Per evitare di generare System.ObjectDisposedException, è consigliabile chiamare Dispose su un oggetto non più di una volta.: Lines: 71</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123">
+   <Name>Le richieste di collegamento negli override devono essere identiche a quelle nei metodi di base</Name>
+   <Description>Se un metodo virtuale ha un LinkDemand, in molti casi deve averlo anche il relativo override, e se un override ha un LinkDemand, deve averlo anche il metodo virtuale sottoposto a override. Poiché è possibile chiamare in modo esplicito qualsiasi override di un metodo virtuale, tutti questi override dovrebbero avere lo stesso stato LinkDemand o, in caso contrario, dovrebbero essere rivisti. La stessa considerazione vale per i controlli di sicurezza LinkDemand per i metodi che fanno parte dell'implementazione di una interfaccia, poiché il chiamante potrebbe utilizzare un riferimento di tipo interfaccia per accedere al metodo.</Description>
+   <Resolution Name="BaseOnly">Aggiungere il seguente attributo di sicurezza a {0} per creare la corrispondenza con un LinkDemand nel metodo di base {1}: {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182305(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="securitytransparencyrules.dll" Version="4.0.0.0" />
+  </Rule>
+  <Rule TypeName="PInvokeDeclarationsShouldBePortable" Category="Microsoft.Portability" CheckId="CA1901">
+   <Name>Le dichiarazioni P/Invoke devono essere portabili</Name>
+   <Description>.</Description>
+   <Resolution Name="Parameter">In base alla dichiarazione presente nel codice, il parametro {0} di P/Invoke {1} sarà di {2} byte sulle piattaforme {3}. Ciò non è corretto in quanto l'effettiva dichiarazione nativa dell'API indica che deve essere di {4} byte sulle piattaforme {3}. Consultare la documentazione MSDN Platform SDK per determinare il tipo di dati da utilizzare al posto di {5}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182284(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="portabilityrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401">
+   <Name>I P/Invoke non devono essere visibili</Name>
+   <Description>Il livello di interoperabilità non deve essere pubblico. L'attributo DllImport non deve essere applicato a membri accessibili pubblicamente (pubblici o protetti).</Description>
+   <Resolution Name="Default">Modificare l'accessibilità di P/Invoke {0} in modo che non sia più visibile dall'esterno degli assembly.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182209.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">CriticalError</MessageLevel>
+   <File Name="interoperabilityrules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Categoria</String>
+  <String Key="Certainty">Attendibilità</String>
+  <String Key="CollapseAll">Comprimi tutto</String>
+  <String Key="CheckId">ID controllo</String>
+  <String Key="Error">Errore</String>
+  <String Key="Errors">errori</String>
+  <String Key="ExpandAll">Espandi tutto</String>
+  <String Key="Help">Guida</String>
+  <String Key="Line">Riga</String>
+  <String Key="Messages">messaggi</String>
+  <String Key="LocationNotStoredInPdb">[Percorso non archiviato nel PDB]</String>
+  <String Key="Project">Progetto</String>
+  <String Key="Resolution">Risoluzione</String>
+  <String Key="Rule">Regola</String>
+  <String Key="RuleFile">File delle regole</String>
+  <String Key="RuleDescription">Descrizione regola</String>
+  <String Key="Source">Origine</String>
+  <String Key="Status">Stato</String>
+  <String Key="Target">Destinazione</String>
+  <String Key="Warning">Avviso</String>
+  <String Key="Warnings">avvisi</String>
+  <String Key="ReportTitle">Report di analisi codice</String>
+ </Localized>
+</FxCopReport>
