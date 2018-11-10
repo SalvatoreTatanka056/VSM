@@ -101,19 +101,9 @@ namespace VMS
             if (strMacro == "")
                 return;
 
-            /* Esecuzione icona in Tray */
-            childref1 = new ThreadStart(RotateIconTray);
-            childThread1 = new Thread(childref1);
-            childThread1.Start();
-
             /* Esecuzione thread per esecuzione comandi */
-            childref2 = new ThreadStart(EseguiMacro);
-            childThread2 = new Thread(childref2);
-            childThread2.Start();
+            EseguiMacro();
 
-            /* Mettere in Join i thread*/
-            childThread2.Join();
-            childThread1.Join();
 
         }
 
@@ -122,10 +112,6 @@ namespace VMS
         /// </summary>
         private void EseguiMacro()
         {
-            System.Diagnostics.Process proc = new System.Diagnostics.Process();
-            proc.EnableRaisingEvents = false;
-            proc.StartInfo.FileName = toolStripTextBox1.Text;
-            proc.StartInfo.Arguments = toolStripTextBox1.Text;
             DialogResult dlg;
 
             if (TStxtCicli.Text != "")
@@ -138,210 +124,71 @@ namespace VMS
                 if (dlg == DialogResult.No)
                 {
                     notifyIcon1.Visible = false;
-                    proc.Close();
-                    proc.Dispose();
                     notifyIcon1.ShowBalloonTip(1000, "Script", "Script Terminato", ToolTipIcon.Info);
                     pblnThreadTray = false;
                     return;
                 }
             }
-            else
+
+            for (int i = 0 ; i < _iCicli ; i++)
             {
-                try
+                /* Compila Script */
+                string strCompilazione = "";
+                strCompilazione = strMacro.Replace("\n" , "");
+                strCompilazione = strCompilazione.Replace("\r" , "");
+                strCompilazione = strCompilazione.Replace("\n" , "");
+                strCompilazione = strCompilazione.Replace("\t" , "");
+
+                string[] str = strCompilazione.Split(';');
+
+                Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
+
+                /* importante posizionare i programmi aperti nella posiziona solita 
+                    * ( oppure non utilizzare i click del mouse per alcune operazioni ) */
+                foreach (string strSendMessage in str)
                 {
-                    proc.Start();
-                }
-                catch
-                {
-                    notifyIcon1.ShowBalloonTip(1000, "Script", "Script Terminato", ToolTipIcon.Info);
-                    pblnThreadTray = false;
-                    return;
-                };
-            }
 
-            /* Nascondi l'icona */
-            notifyIcon1.Visible = true;
-
-            for (int i = 0; i < _iCicli; i++)
-            {
-                try
-                {
-                    /* Compila Script */
-                    string strCompilazione = "";
-                    strCompilazione = strMacro.Replace("\n", "");
-                    strCompilazione = strCompilazione.Replace("\r", "");
-                    strCompilazione = strCompilazione.Replace("\n", "");
-                    strCompilazione = strCompilazione.Replace("\t", "");
-
-                    string[] str = strCompilazione.Split(';');
-
-                    Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-
-                    int iDSendMessage = 0;
-                    StreamReader sr = null;
-                    string LineRead = "";
-
-                    if (str.Length > 0)
+                    /* Gestione Mouse ... */
+                    if (strSendMessage.Length > 1 && strSendMessage.Substring(0 , 2) == "T=")
                     {
-                        if (str[0].ToString().Substring(0, 2) == "$F")
-                        {
+                        string strTimer = strSendMessage.Substring(2).ToString();
+                        Thread.Sleep(Convert.ToInt32(strTimer));
 
-                            try
-                            {
-                                sr = new StreamReader(str[0].ToString().Substring(2).ToString());
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Attenzione!", "Errore Apertura File", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-
-                            }
-                        }
                     }
-
-                    if (str[0].ToString().Substring(0, 2) == "$F")
+                    else if (strSendMessage.Length > 3 && strSendMessage.Substring(0 , 4) == "XY_L"/*strSendMessage.IndexOf("XY") != -1*/)
                     {
-                        while (sr.EndOfStream == false)
-                        {
+                        string[] strCoordXY = strSendMessage.Substring(5).Split('-');
+                        m_intX = Convert.ToInt16(strCoordXY[0]);
+                        m_intY = Convert.ToInt16(strCoordXY[1]);
+                        LeftMouseClick(m_intX , m_intY);
+                        Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
+                    }
+                    else if (strSendMessage.Length > 3 && strSendMessage.Substring(0 , 4) == "XY_R"/*strSendMessage.IndexOf("XY") != -1*/)
+                    {
 
-                            LineRead = sr.ReadLine();
-                            /* importante posizionare i programmi aperti nella posiziona scelta
-                             * ( oppure non utilizzare i click del mouse per alcune operazioni ) */
-                            foreach (string strSendMessage in str)
-                            {
-
-                                if (strSendMessage.Length > 1 && strSendMessage.Substring(0, 2) == "$F")
-                                {
-                                    continue;
-                                }
-
-                                if (strSendMessage.Length > 1 && strSendMessage.Substring(0, 2) == "$1")
-                                {
-
-                                    SendKeys.SendWait(LineRead);
-                                    Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-                                }
-
-
-                                /* Gestione Mouse ... */
-                                if (strSendMessage.Length > 1 && strSendMessage.Substring(0, 2) == "T=")
-                                {
-                                    string strTimer = strSendMessage.Substring(2).ToString();
-                                    Thread.Sleep(Convert.ToInt16(strTimer));
-
-                                }
-                                else if (strSendMessage.Length > 3 && strSendMessage.Substring(0, 4) == "XY_L"
-                                    /*strSendMessage.IndexOf("XY") != -1*/)
-                                {
-                                    string[] strCoordXY = strSendMessage.Substring(5).Split('-');
-                                    m_intX = Convert.ToInt16(strCoordXY[0]);
-                                    m_intY = Convert.ToInt16(strCoordXY[1]);
-                                    LeftMouseClick(m_intX, m_intY);
-                                    Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-                                }
-                                else if (strSendMessage.Length > 3 && strSendMessage.Substring(0, 4) == "XY_R"
-                                    /*strSendMessage.IndexOf("XY") != -1*/)
-                                {
-
-                                    string[] strCoordXY = strSendMessage.Substring(5).Split('-');
-                                    m_intX = Convert.ToInt16(strCoordXY[0]);
-                                    m_intY = Convert.ToInt16(strCoordXY[1]);
-                                    RightMouseClick(m_intX, m_intY);
-                                    Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-                                }
-                                else
-                                {
-
-                                    if (strSendMessage.Length > 1 && strSendMessage.Substring(0, 2) == "$1")
-                                    {
-                                        continue;
-                                    }
-                                    else
-                                    {
-                                        SendKeys.SendWait(strSendMessage);
-                                        Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-                                    }
-                                }
-
-                                Application.DoEvents();
-
-                                iDSendMessage++;
-                            }
-
-                            Application.DoEvents();
-                        }
-
-                        string tmp_operation = string.Format("Terminato {0}/{1}", i + 1, _iCicli);
-
-                        notifyIcon1.ShowBalloonTip(1000, "Script", tmp_operation, ToolTipIcon.Info);
-                        pblnThreadTray = false;
-
-                        sr.Close();
-                        sr.Dispose();
-
+                        string[] strCoordXY = strSendMessage.Substring(5).Split('-');
+                        m_intX = Convert.ToInt16(strCoordXY[0]);
+                        m_intY = Convert.ToInt16(strCoordXY[1]);
+                        RightMouseClick(m_intX , m_intY);
+                        Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
                     }
                     else
                     {
-                        /* importante posizionare i programmi aperti nella posiziona solita 
-                         * ( oppure non utilizzare i click del mouse per alcune operazioni ) */
-                        foreach (string strSendMessage in str)
-                        {
-
-                            /* Gestione Mouse ... */
-                            if (strSendMessage.Length > 1 && strSendMessage.Substring(0, 2) == "T=")
-                            {
-                                string strTimer = strSendMessage.Substring(2).ToString();
-                                Thread.Sleep(Convert.ToInt16(strTimer));
-
-                            }
-                            else if (strSendMessage.Length > 3 && strSendMessage.Substring(0, 4) == "XY_L"/*strSendMessage.IndexOf("XY") != -1*/)
-                            {
-                                string[] strCoordXY = strSendMessage.Substring(5).Split('-');
-                                m_intX = Convert.ToInt16(strCoordXY[0]);
-                                m_intY = Convert.ToInt16(strCoordXY[1]);
-                                LeftMouseClick(m_intX, m_intY);
-                                Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-                            }
-                            else if (strSendMessage.Length > 3 && strSendMessage.Substring(0, 4) == "XY_R"/*strSendMessage.IndexOf("XY") != -1*/)
-                            {
-
-                                string[] strCoordXY = strSendMessage.Substring(5).Split('-');
-                                m_intX = Convert.ToInt16(strCoordXY[0]);
-                                m_intY = Convert.ToInt16(strCoordXY[1]);
-                                RightMouseClick(m_intX, m_intY);
-                                Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-                            }
-                            else
-                            {
-                                SendKeys.SendWait(strSendMessage);
-                                Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-                            }
-
-                            iDSendMessage++;
-                            Application.DoEvents();
-                        }
-
-                        string tmp_operation = string.Format("Terminato {0}/{1}", i + 1, _iCicli);
-
-
-                        notifyIcon1.ShowBalloonTip(1000, "Script", tmp_operation, ToolTipIcon.Info);
-                        pblnThreadTray = false;
+                        SendKeys.SendWait(strSendMessage);
+                        Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
                     }
+
+                    Application.DoEvents();
                 }
-                catch (Exception ex)
-                {
-                    Console.Write(ex.Message.ToString());
-                    notifyIcon1.ShowBalloonTip(1000, "Script", "Script Terminato", ToolTipIcon.Info);
-                    pblnThreadTray = false;
-                }
+           
+
+                string tmp_operation = string.Format("Terminato {0}/{1}", i + 1, _iCicli);
+
+
+                notifyIcon1.ShowBalloonTip(1000, "Script", tmp_operation, ToolTipIcon.Info);
+                pblnThreadTray = false;
             }
-
-            Thread.Sleep(1000);
-            notifyIcon1.Visible = false;
-            proc.Close();
-            proc.Dispose();
-
-        }
+    }
 
         /// <summary>
         /// Scelta Eseguibile su cui Inviare Messaggi
@@ -477,6 +324,18 @@ namespace VMS
         private void frmMain_Load(object sender, EventArgs e)
         {
 
+            string[] args = Environment.GetCommandLineArgs();
+
+            foreach (string arg in args)
+            {
+                if (arg.IndexOf(".vsm") != -1)
+                {
+                    Query.Text = File.ReadAllText(arg );
+                    /* Thread.Sleep(1000);
+                     BtnNext_Click(BtnNext, new EventArgs());*/
+                }
+            }
+
             /* Caricament o Icone Per Animazione in tray */
             images = new Icon[8];
             images[0] = new Icon("Rotate1.ico");
@@ -499,17 +358,9 @@ namespace VMS
             TStxtCicli.Enabled = false;
             toolStripTextBox3.Enabled = false;
 
-            string[] args = Environment.GetCommandLineArgs();
+      
 
-            foreach (string arg in args)
-            {
-                if (arg.IndexOf(".vsm") != -1)
-                {
-                    File.WriteAllText(arg, Query.Text);
-                    Thread.Sleep(1000);
-                    BtnNext_Click(BtnNext, new EventArgs());
-                }
-            }
+
         }
 
         /* Dispose di Tutti gli Oggetti e scaricamento della frmMain */
