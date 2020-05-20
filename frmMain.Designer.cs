@@ -67,6 +67,7 @@
             this.saveScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.nuovoScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.stsMain.SuspendLayout();
@@ -348,6 +349,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuovoScriptToolStripMenuItem,
             this.openSriptToolStripMenuItem,
             this.saveScriptToolStripMenuItem,
             this.closeToolStripMenuItem});
@@ -358,25 +360,35 @@
             // openSriptToolStripMenuItem
             // 
             this.openSriptToolStripMenuItem.Name = "openSriptToolStripMenuItem";
-            this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
-            this.openSriptToolStripMenuItem.Text = "&Open Sript";
+            this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openSriptToolStripMenuItem.Text = "&Open Script";
+            this.openSriptToolStripMenuItem.Click += new System.EventHandler(this.openSriptToolStripMenuItem_Click);
             // 
             // saveScriptToolStripMenuItem
             // 
             this.saveScriptToolStripMenuItem.Name = "saveScriptToolStripMenuItem";
-            this.saveScriptToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.saveScriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveScriptToolStripMenuItem.Text = "S&ave Script";
+            this.saveScriptToolStripMenuItem.Click += new System.EventHandler(this.saveScriptToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.closeToolStripMenuItem.Text = "&Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // fontDialog
             // 
             this.fontDialog.AllowVerticalFonts = false;
             this.fontDialog.ShowEffects = false;
+            // 
+            // nuovoScriptToolStripMenuItem
+            // 
+            this.nuovoScriptToolStripMenuItem.Name = "nuovoScriptToolStripMenuItem";
+            this.nuovoScriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.nuovoScriptToolStripMenuItem.Text = "&Nuovo Script";
+            this.nuovoScriptToolStripMenuItem.Click += new System.EventHandler(this.nuovoScriptToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -447,5 +459,6 @@
         private System.Windows.Forms.ToolStripMenuItem openSriptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveScriptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuovoScriptToolStripMenuItem;
     }
 }

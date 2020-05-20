@@ -176,6 +176,12 @@ namespace VMS
 
         private void BtnScegliApplicazione_Click(object sender , EventArgs e)
         {
+            SaveFile();
+        }
+
+        private void SaveFile()
+        {
+
             string dummy = "file.vsm";
             string path = "";
             SaveFileDialog sf = new SaveFileDialog();
@@ -185,13 +191,19 @@ namespace VMS
             if (sf.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
                 path = sf.FileName;
-                File.WriteAllText(path , Query.Text);
+                File.WriteAllText(path, Query.Text);
             }
         }
 
         private void BtnOpen_Click(object sender , EventArgs e)
         {
 
+            OpenFile();
+        }
+
+
+        private void OpenFile()
+        {
             opFDMain.Filter = "Script (*.vsm)|*.vsm";
             opFDMain.FileName = "*.vsm";
             opFDMain.DefaultExt = ".vsm";
@@ -411,6 +423,26 @@ namespace VMS
         {
             this.Query.Enabled = true;
             BtnBookmark.Enabled = true; 
+        }
+
+        private void openSriptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFile();
+        }
+
+        private void saveScriptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void nuovoScriptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Query.Text = "";
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e)
