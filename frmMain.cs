@@ -36,11 +36,11 @@ namespace VMS
 
         /* Importazione dei Metodi per Gestione Mouse */
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        static extern bool SetCursorPos(int x , int y);
+        static extern bool SetCursorPos(int x, int y);
 
         /* Importazione dei Metodi per Gestione Mouse */
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern void mouse_event(int dwFlags , int dx , int dy , int cButtons , int dwExtraInfo);
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
 
         public frmMain()
         {
@@ -57,20 +57,20 @@ namespace VMS
             }
 
         }
-        public static void LeftMouseClick(int xpos , int ypos)
+        public static void LeftMouseClick(int xpos, int ypos)
         {
-            Cursor.Position = new Point(xpos , ypos);
-            mouse_event(MOUSEEVENTF_LEFTDOWN , xpos , ypos , 0 , 0);
-            mouse_event(MOUSEEVENTF_LEFTUP , xpos , ypos , 0 , 0);
+            Cursor.Position = new Point(xpos, ypos);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
         }
-        public static void RightMouseClick(int xpos , int ypos)
+        public static void RightMouseClick(int xpos, int ypos)
         {
-            Cursor.Position = new Point(xpos , ypos);
-            mouse_event(MOUSEEVENTF_RIGHTDOWN , xpos , ypos , 0 , 0);
-            mouse_event(MOUSEEVENTF_RIGHTUP , xpos , ypos , 0 , 0);
+            Cursor.Position = new Point(xpos, ypos);
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_RIGHTUP, xpos, ypos, 0, 0);
         }
 
-        private void BtnNext_Click(object sender , EventArgs e)
+        private void BtnNext_Click(object sender, EventArgs e)
         {
 
             frmMain.ActiveForm.WindowState = FormWindowState.Minimized;
@@ -81,85 +81,98 @@ namespace VMS
 
             /* Esecuzione thread per esecuzione comandi */
             EseguiMacro();
-            Application.Exit();
+            //Application.Exit();
         }
 
         /* esecuzione dei comandi salvati */
         private void EseguiMacro()
         {
-           
+
             if (TStxtCicli.Text != "")
                 _iCicli = Convert.ToInt16(TStxtCicli.Text);
 
             int AttesaOperazione = Convert.ToInt16(toolStripTextBox3.Text);
 
-
-            for (int i = 0 ; i < _iCicli ; i++)
+            try
             {
-                /* Compila Script */
-                string strCompilazione = "";
-                strCompilazione = strMacro.Replace("\n" , "");
-                strCompilazione = strCompilazione.Replace("\r" , "");
-                strCompilazione = strCompilazione.Replace("\n" , "");
-                strCompilazione = strCompilazione.Replace("\t" , "");
 
-                string[] str = strCompilazione.Split(';');
-
-                Thread.Sleep(AttesaOperazione);
-
-                foreach (string strSendMessage in str)
+                for (int i = 0; i < _iCicli; i++)
                 {
+                    /* Compila Script */
+                    string strCompilazione = "";
+                    strCompilazione = strMacro.Replace("\n", "");
+                    strCompilazione = strCompilazione.Replace("\r", "");
+                    strCompilazione = strCompilazione.Replace("\n", "");
+                    strCompilazione = strCompilazione.Replace("\t", "");
 
-                    /* avviare programma esterno */
-                    if (strSendMessage.Length > 4 && strSendMessage.Substring(0 , 4) == "Run=")
-                    {
-                        string sRunProcess = strSendMessage.Substring(4).ToString();
-                        System.Diagnostics.Process.Start(sRunProcess);
-                        Thread.Sleep(5000);
-                    }
-                    /* atteso tempo */
-                    else if (strSendMessage.Length > 1 && strSendMessage.Substring(0 , 2) == "T=")
-                    {
-                        string strTimer = strSendMessage.Substring(2).ToString();
-                        Thread.Sleep(Convert.ToInt32(strTimer));
+                    string[] str = strCompilazione.Split(';');
 
-                    }
-                    /* esegue spostamento del mouse ed esegue click pulsante sinistro */
-                    else if (strSendMessage.Length > 3 && strSendMessage.Substring(0 , 4) == "XY_L"/*strSendMessage.IndexOf("XY") != -1*/)
-                    {
-                        string[] strCoordXY = strSendMessage.Substring(5).Split('-');
-                        m_intX = Convert.ToInt16(strCoordXY[0]);
-                        m_intY = Convert.ToInt16(strCoordXY[1]);
-                        LeftMouseClick(m_intX , m_intY);
-                        Thread.Sleep(AttesaOperazione);
-                    }
-                    /* esegue spostamento del mouse ed esegue click pulsante destro */
-                    else if (strSendMessage.Length > 3 && strSendMessage.Substring(0 , 4) == "XY_R"/*strSendMessage.IndexOf("XY") != -1*/)
+                    Thread.Sleep(AttesaOperazione);
+
+
+                    foreach (string strSendMessage in str)
                     {
 
-                        string[] strCoordXY = strSendMessage.Substring(5).Split('-');
-                        m_intX = Convert.ToInt16(strCoordXY[0]);
-                        m_intY = Convert.ToInt16(strCoordXY[1]);
-                        RightMouseClick(m_intX , m_intY);
-                        Thread.Sleep(AttesaOperazione);
-                    }
-                    else
-                    {
-                        /*  invia messaggi sendkeys --> */ 
-                        SendKeys.SendWait(strSendMessage);
-                        Thread.Sleep(AttesaOperazione);
+                        /* avviare programma esterno */
+                        if (strSendMessage.Length > 4 && strSendMessage.Substring(0, 4) == "Run=")
+                        {
+                            string sRunProcess = strSendMessage.Substring(4).ToString();
+                            System.Diagnostics.Process.Start(sRunProcess);
+                            Thread.Sleep(5000);
+                        }
+                        /* atteso tempo */
+                        else if (strSendMessage.Length > 1 && strSendMessage.Substring(0, 2) == "T=")
+                        {
+                            string strTimer = strSendMessage.Substring(2).ToString();
+                            Thread.Sleep(Convert.ToInt32(strTimer));
+
+                        }
+                        /* esegue spostamento del mouse ed esegue click pulsante sinistro */
+                        else if (strSendMessage.Length > 3 && strSendMessage.Substring(0, 4) == "XY_L"/*strSendMessage.IndexOf("XY") != -1*/)
+                        {
+                            string[] strCoordXY = strSendMessage.Substring(5).Split('-');
+                            m_intX = Convert.ToInt16(strCoordXY[0]);
+                            m_intY = Convert.ToInt16(strCoordXY[1]);
+                            LeftMouseClick(m_intX, m_intY);
+                            Thread.Sleep(AttesaOperazione);
+                        }
+                        /* esegue spostamento del mouse ed esegue click pulsante destro */
+                        else if (strSendMessage.Length > 3 && strSendMessage.Substring(0, 4) == "XY_R"/*strSendMessage.IndexOf("XY") != -1*/)
+                        {
+
+                            string[] strCoordXY = strSendMessage.Substring(5).Split('-');
+                            m_intX = Convert.ToInt16(strCoordXY[0]);
+                            m_intY = Convert.ToInt16(strCoordXY[1]);
+                            RightMouseClick(m_intX, m_intY);
+                            Thread.Sleep(AttesaOperazione);
+                        }
+                        else
+                        {
+                            /*  invia messaggi sendkeys --> */
+                            SendKeys.SendWait(strSendMessage);
+                            Thread.Sleep(AttesaOperazione);
+                        }
+
+                        Application.DoEvents();
                     }
 
-                    Application.DoEvents();
                 }
 
-                string tmp_operation = string.Format("Terminato {0}/{1}" , i + 1 , _iCicli);
-                nfiMain.ShowBalloonTip(0, "Script" , tmp_operation , ToolTipIcon.Info);
-                nfiMain.BalloonTipClosed += (sender , e) => nfiMain.Dispose();
             }
+            catch
+            {
+                MessageBox.Show( "Error Imprevisto Controlla sintassi script", "Attenzione", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
+            MessageBox.Show("Script Terminato", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //string tmp_operation = string.Format("Script Terminato");
+            //nfiMain.ShowBalloonTip(0, "Script", tmp_operation, ToolTipIcon.Info);
+            //nfiMain.BalloonTipClosed += (sender, e) => nfiMain.Dispose();
         }
 
-        private void toolStripButton1_Click(object sender , EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
             string tempPath = "";
 
@@ -170,11 +183,11 @@ namespace VMS
             if (opFDMain.ShowDialog(this) == DialogResult.OK)
             {
                 tempPath = opFDMain.FileName;
-               
+
             }
         }
 
-        private void BtnScegliApplicazione_Click(object sender , EventArgs e)
+        private void BtnScegliApplicazione_Click(object sender, EventArgs e)
         {
             SaveFile();
         }
@@ -195,7 +208,7 @@ namespace VMS
             }
         }
 
-        private void BtnOpen_Click(object sender , EventArgs e)
+        private void BtnOpen_Click(object sender, EventArgs e)
         {
 
             OpenFile();
@@ -218,7 +231,7 @@ namespace VMS
             }
         }
 
-        protected override bool ProcessCmdKey(ref Message msg , Keys keyData)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
 
             if (keyData == (Keys.Control | Keys.F))
@@ -230,31 +243,31 @@ namespace VMS
             }
             else if (keyData == (Keys.Control | Keys.S))
             {
-                BtnScegliApplicazione_Click(BtnExtremeStop , new EventArgs());
+                BtnScegliApplicazione_Click(BtnExtremeStop, new EventArgs());
                 return true;
             }
             else if (keyData == (Keys.Control | Keys.O))
             {
-                BtnOpen_Click(BtnComment , new EventArgs());
+                BtnOpen_Click(BtnComment, new EventArgs());
                 return true;
             }
 
-            return base.ProcessCmdKey(ref msg , keyData);
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         /* Gestione Ricerca sull'Editor */
-        private void BtnFind_Click(object sender , EventArgs e)
+        private void BtnFind_Click(object sender, EventArgs e)
         {
 
             FindAndReplaceForm _findForm = new FindAndReplaceForm();
 
             TextEditorControl editor = Query;
             if (editor == null) return;
-            _findForm.ShowFor(editor , false);
+            _findForm.ShowFor(editor, false);
         }
 
         /* Caricamento Form Principale */
-        private void frmMain_Load(object sender , EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
 
             string[] args = Environment.GetCommandLineArgs();
@@ -292,7 +305,7 @@ namespace VMS
         }
 
         /* Dispose di Tutti gli Oggetti e scaricamento della frmMain */
-        private void frmMain_FormClosed(object sender , FormClosedEventArgs e)
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Controls.Clear();
             this.Dispose();
@@ -301,7 +314,7 @@ namespace VMS
         }
 
         /* Recupera Coordinate X,Y del Click Mouse da ripetere */
-        private void BtnBookmark_Click(object sender , EventArgs e)
+        private void BtnBookmark_Click(object sender, EventArgs e)
         {
             Point poit = AutoIt.AutoItX.MouseGetPos();
 
@@ -315,32 +328,32 @@ namespace VMS
             toolStripStatusLabel1.Text = "DOPO AVER ACQUISITO EVENTO MOUSE CLICCA SULLA FINESTRA EDITOR ... ";
 
 
-            frm = new frmInfoMouse( m_intX_1, m_intY_1);
+            frm = new frmInfoMouse(m_intX_1, m_intY_1);
             frm.Show();
-            
+
         }
 
         /* Chiusura Form Mouse */
-        void frm_FormClosed(object sender , FormClosedEventArgs e)
+        void frm_FormClosed(object sender, FormClosedEventArgs e)
         {
-       
+
 
         }
 
         /* Parametro Cicli di esecuzione Script */
-        private void TStxtCicli_Click(object sender , EventArgs e)
+        private void TStxtCicli_Click(object sender, EventArgs e)
         {
             /* Se il campo cicli e' valido */
             if (TStxtCicli.Text != "")
                 _iCicli = Convert.ToInt16(TStxtCicli.Text);
         }
 
-        private void BtnSearch_Click(object sender , EventArgs e)
+        private void BtnSearch_Click(object sender, EventArgs e)
         {
-       
+
             int tot = 0;
 
-            if(Convert.ToInt32(TStxtCicli.Text) < 1 )
+            if (Convert.ToInt32(TStxtCicli.Text) < 1)
             {
                 TStxtCicli.Text = "1";
 
@@ -361,15 +374,15 @@ namespace VMS
             }
         }
 
-        private void Query_Load(object sender , EventArgs e)
+        private void Query_Load(object sender, EventArgs e)
         {
-            
+
 
         }
 
         public int m_Timer = 2000;
 
-        private void toolStripButton2_Click_1(object sender , EventArgs e)
+        private void toolStripButton2_Click_1(object sender, EventArgs e)
         {
 
             strReadFile = "";
@@ -387,7 +400,7 @@ namespace VMS
 
         }
 
-        private void leggiToolStripMenuItem_Click(object sender , EventArgs e)
+        private void leggiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             leggiToolStripMenuItem.Checked = !leggiToolStripMenuItem.Checked;
 
@@ -397,12 +410,12 @@ namespace VMS
             }
             else
             {
-                Query.Text = Query.Text.Replace("$FNomefile.txt\r\n" , "");
-                Query.Text = Query.Text.Replace("$1\r\n" , "");
+                Query.Text = Query.Text.Replace("$FNomefile.txt\r\n", "");
+                Query.Text = Query.Text.Replace("$1\r\n", "");
             }
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender , MouseEventArgs e)
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
             nfiMain.Visible = false;
@@ -410,9 +423,9 @@ namespace VMS
             _iCicli = 0;
         }
 
-        private void nfiMain_BalloonTipClosed(object sender , EventArgs e) => Dispose();
+        private void nfiMain_BalloonTipClosed(object sender, EventArgs e) => Dispose();
 
-        private void toolStripButton3_Click(object sender , EventArgs e)
+        private void toolStripButton3_Click(object sender, EventArgs e)
         {
             Form frm = new frmHelp();
             frm.Show();
@@ -465,7 +478,7 @@ namespace VMS
                 TStxtCicli.Text = tot.ToString();
             }
         }
-        private void exitToolStripMenuItem_Click(object sender , EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             nfiMain.Visible = false;
             nfiMain.Dispose();

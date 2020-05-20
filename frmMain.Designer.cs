@@ -60,6 +60,7 @@
             this.stsMain = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.leggiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.globalEventProvider1 = new Gma.UserActivityMonitor.GlobalEventProvider();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +69,6 @@
             this.saveScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontDialog = new System.Windows.Forms.FontDialog();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.stsMain.SuspendLayout();
@@ -339,6 +339,11 @@
             this.leggiToolStripMenuItem.Text = "&Leggi ";
             this.leggiToolStripMenuItem.Click += new System.EventHandler(this.leggiToolStripMenuItem_Click);
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 20);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -358,7 +363,7 @@
             this.saveScriptToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 24);
             this.toolStripMenuItem1.Text = "&Strumenti";
             // 
             // nuovoScriptToolStripMenuItem
@@ -393,11 +398,6 @@
             // 
             this.fontDialog.AllowVerticalFonts = false;
             this.fontDialog.ShowEffects = false;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 20);
             // 
             // frmMain
             // 
