@@ -73,6 +73,9 @@ namespace VMS
         private void BtnNext_Click(object sender, EventArgs e)
         {
 
+
+
+
             frmMain.ActiveForm.WindowState = FormWindowState.Minimized;
             strMacro = Query.Text;
 
