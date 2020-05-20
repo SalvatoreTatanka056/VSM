@@ -295,10 +295,7 @@ namespace VMS
             images[6] = new Icon("Rotate7.ico");
             images[7] = new Icon("Rotate8.ico");
 
-            //pblnThreadTray = true;
-            nfiMain.Icon = images[0];
-
-            /* Gestione Parametri di Default */
+         /* Gestione Parametri di Default */
             toolStripTextBox3.Text = "1000";
             TStxtCicli.Text = "1";
 
@@ -421,7 +418,6 @@ namespace VMS
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
-            nfiMain.Visible = false;
             frmMain.ActiveForm.WindowState = FormWindowState.Normal;
             _iCicli = 0;
         }
@@ -483,8 +479,7 @@ namespace VMS
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nfiMain.Visible = false;
-            nfiMain.Dispose();
+  
             Application.Exit();
 
         }
