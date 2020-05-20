@@ -62,11 +62,11 @@
             this.leggiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.globalEventProvider1 = new Gma.UserActivityMonitor.GlobalEventProvider();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fontDialog = new System.Windows.Forms.FontDialog();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openSriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fontDialog = new System.Windows.Forms.FontDialog();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.stsMain.SuspendLayout();
@@ -345,11 +345,6 @@
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // fontDialog
-            // 
-            this.fontDialog.AllowVerticalFonts = false;
-            this.fontDialog.ShowEffects = false;
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -363,20 +358,25 @@
             // openSriptToolStripMenuItem
             // 
             this.openSriptToolStripMenuItem.Name = "openSriptToolStripMenuItem";
-            this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.openSriptToolStripMenuItem.Text = "&Open Sript";
             // 
             // saveScriptToolStripMenuItem
             // 
             this.saveScriptToolStripMenuItem.Name = "saveScriptToolStripMenuItem";
-            this.saveScriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveScriptToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.saveScriptToolStripMenuItem.Text = "S&ave Script";
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.closeToolStripMenuItem.Text = "&Close";
+            // 
+            // fontDialog
+            // 
+            this.fontDialog.AllowVerticalFonts = false;
+            this.fontDialog.ShowEffects = false;
             // 
             // frmMain
             // 
@@ -392,7 +392,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Virtual SendMessage";
+            this.Text = "Virtual Send Message";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Click += new System.EventHandler(this.frmMain_Click);
