@@ -63,11 +63,11 @@
             this.globalEventProvider1 = new Gma.UserActivityMonitor.GlobalEventProvider();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuovoScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openSriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontDialog = new System.Windows.Forms.FontDialog();
-            this.nuovoScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.stsMain.SuspendLayout();
@@ -76,6 +76,8 @@
             // 
             // Query
             // 
+            this.Query.BackgroundImage = global::VMS.Properties.Resources.sfondo_editor;
+            this.Query.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Query.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Query.ForeColor = System.Drawing.Color.Blue;
             this.Query.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -357,24 +359,31 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 24);
             this.toolStripMenuItem1.Text = "&Strumenti";
             // 
+            // nuovoScriptToolStripMenuItem
+            // 
+            this.nuovoScriptToolStripMenuItem.Name = "nuovoScriptToolStripMenuItem";
+            this.nuovoScriptToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.nuovoScriptToolStripMenuItem.Text = "&Nuovo Script";
+            this.nuovoScriptToolStripMenuItem.Click += new System.EventHandler(this.nuovoScriptToolStripMenuItem_Click);
+            // 
             // openSriptToolStripMenuItem
             // 
             this.openSriptToolStripMenuItem.Name = "openSriptToolStripMenuItem";
-            this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.openSriptToolStripMenuItem.Text = "&Open Script";
             this.openSriptToolStripMenuItem.Click += new System.EventHandler(this.openSriptToolStripMenuItem_Click);
             // 
             // saveScriptToolStripMenuItem
             // 
             this.saveScriptToolStripMenuItem.Name = "saveScriptToolStripMenuItem";
-            this.saveScriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveScriptToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.saveScriptToolStripMenuItem.Text = "S&ave Script";
             this.saveScriptToolStripMenuItem.Click += new System.EventHandler(this.saveScriptToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -382,13 +391,6 @@
             // 
             this.fontDialog.AllowVerticalFonts = false;
             this.fontDialog.ShowEffects = false;
-            // 
-            // nuovoScriptToolStripMenuItem
-            // 
-            this.nuovoScriptToolStripMenuItem.Name = "nuovoScriptToolStripMenuItem";
-            this.nuovoScriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.nuovoScriptToolStripMenuItem.Text = "&Nuovo Script";
-            this.nuovoScriptToolStripMenuItem.Click += new System.EventHandler(this.nuovoScriptToolStripMenuItem_Click);
             // 
             // frmMain
             // 

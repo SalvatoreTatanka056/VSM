@@ -194,6 +194,7 @@
     <Content Include="Alarm_Padlock_Icon_16.png" />
     <Content Include="Alarm_Padlock_Icon_16_2.png" />
     <Content Include="Oxygen-Icons.org-Oxygen-Actions-system-run.ico" />
+    <None Include="Resources\sfondo-editor.PNG" />
     <None Include="Resources\mouse.png" />
     <None Include="Resources\Books.ico" />
     <None Include="Properties\images.jpg" />

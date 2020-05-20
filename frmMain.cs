@@ -308,8 +308,11 @@ namespace VMS
             m_intX_1 = poit.X;
             m_intY_1 = poit.Y;
 
+            //this.Query.BackgroundImage 
             this.Query.Enabled = false;
             BtnBookmark.Enabled = false;
+
+
 
             frm = new frmInfoMouse( m_intX_1, m_intY_1);
             frm.Show();
