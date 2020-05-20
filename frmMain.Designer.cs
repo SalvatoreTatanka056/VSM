@@ -68,6 +68,7 @@
             this.saveScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.stsMain.SuspendLayout();
@@ -311,7 +312,8 @@
             // 
             this.stsMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.stsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.toolStripStatusLabel1});
             this.stsMain.Location = new System.Drawing.Point(0, 646);
             this.stsMain.Name = "stsMain";
             this.stsMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
@@ -356,7 +358,7 @@
             this.saveScriptToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 26);
             this.toolStripMenuItem1.Text = "&Strumenti";
             // 
             // nuovoScriptToolStripMenuItem
@@ -391,6 +393,11 @@
             // 
             this.fontDialog.AllowVerticalFonts = false;
             this.fontDialog.ShowEffects = false;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 20);
             // 
             // frmMain
             // 
@@ -462,5 +469,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveScriptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuovoScriptToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

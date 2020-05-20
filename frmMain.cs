@@ -312,6 +312,7 @@ namespace VMS
             this.Query.Enabled = false;
             BtnBookmark.Enabled = false;
 
+            toolStripStatusLabel1.Text = "DOPO AVER ACQUISITO EVENTO MOUSE CLICCA SULLA FINESTRA EDITOR ... ";
 
 
             frm = new frmInfoMouse( m_intX_1, m_intY_1);
@@ -425,7 +426,9 @@ namespace VMS
         private void frmMain_Click(object sender, EventArgs e)
         {
             this.Query.Enabled = true;
-            BtnBookmark.Enabled = true; 
+            BtnBookmark.Enabled = true;
+
+            toolStripStatusLabel1.Text = "...";
         }
 
         private void openSriptToolStripMenuItem_Click(object sender, EventArgs e)
