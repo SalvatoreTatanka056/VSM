@@ -63,9 +63,14 @@
             this.globalEventProvider1 = new Gma.UserActivityMonitor.GlobalEventProvider();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openSriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.stsMain.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Query
@@ -75,11 +80,11 @@
             this.Query.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Query.IsReadOnly = false;
             this.Query.LineViewerStyle = ICSharpCode.TextEditor.Document.LineViewerStyle.FullRow;
-            this.Query.Location = new System.Drawing.Point(0, 61);
+            this.Query.Location = new System.Drawing.Point(0, 65);
             this.Query.Margin = new System.Windows.Forms.Padding(4);
             this.Query.Name = "Query";
             this.Query.ShowVRuler = false;
-            this.Query.Size = new System.Drawing.Size(1378, 611);
+            this.Query.Size = new System.Drawing.Size(1378, 607);
             this.Query.TabIndex = 2;
             this.Query.Load += new System.EventHandler(this.Query_Load);
             // 
@@ -106,7 +111,7 @@
             this.toolStripTextBox3,
             this.toolStripButton2,
             this.toolStripButton3});
-            this.ActionsToolStrip.Location = new System.Drawing.Point(0, 24);
+            this.ActionsToolStrip.Location = new System.Drawing.Point(0, 28);
             this.ActionsToolStrip.Name = "ActionsToolStrip";
             this.ActionsToolStrip.Size = new System.Drawing.Size(1378, 37);
             this.ActionsToolStrip.TabIndex = 3;
@@ -332,9 +337,11 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1378, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1378, 28);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -342,6 +349,34 @@
             // 
             this.fontDialog.AllowVerticalFonts = false;
             this.fontDialog.ShowEffects = false;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openSriptToolStripMenuItem,
+            this.saveScriptToolStripMenuItem,
+            this.closeToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(87, 24);
+            this.toolStripMenuItem1.Text = "&Strumenti";
+            // 
+            // openSriptToolStripMenuItem
+            // 
+            this.openSriptToolStripMenuItem.Name = "openSriptToolStripMenuItem";
+            this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openSriptToolStripMenuItem.Text = "&Open Sript";
+            // 
+            // saveScriptToolStripMenuItem
+            // 
+            this.saveScriptToolStripMenuItem.Name = "saveScriptToolStripMenuItem";
+            this.saveScriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveScriptToolStripMenuItem.Text = "S&ave Script";
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.closeToolStripMenuItem.Text = "&Close";
             // 
             // frmMain
             // 
@@ -366,6 +401,8 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.stsMain.ResumeLayout(false);
             this.stsMain.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,5 +443,9 @@
         private System.Windows.Forms.FontDialog fontDialog;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem openSriptToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveScriptToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
     }
 }
