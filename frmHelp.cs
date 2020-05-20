@@ -13,8 +13,8 @@ namespace VMS
         public frmHelp()
         {
             InitializeComponent();
-            this.Text = String.Format("Informazioni su {0}" , AssemblyTitle);
-            this.labelProductName.Text = "VMS";
+            this.Text = String.Format("Informazioni su VSM");
+            this.labelProductName.Text = "VSM";
             this.labelVersion.Text = String.Format("Versione {0}" , AssemblyVersion);
             this.labelCopyright.Text = "Salvatore Romano";
             this.labelCompanyName.Text = "Prodotto Free";
@@ -111,6 +111,11 @@ namespace VMS
         }
 
         private void labelProductName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmHelp_Load(object sender, EventArgs e)
         {
 
         }

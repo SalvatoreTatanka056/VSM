@@ -87,7 +87,7 @@
             this.Query.Margin = new System.Windows.Forms.Padding(4);
             this.Query.Name = "Query";
             this.Query.ShowVRuler = false;
-            this.Query.Size = new System.Drawing.Size(1378, 607);
+            this.Query.Size = new System.Drawing.Size(1464, 607);
             this.Query.TabIndex = 2;
             this.Query.Load += new System.EventHandler(this.Query_Load);
             // 
@@ -116,7 +116,7 @@
             this.toolStripButton3});
             this.ActionsToolStrip.Location = new System.Drawing.Point(0, 28);
             this.ActionsToolStrip.Name = "ActionsToolStrip";
-            this.ActionsToolStrip.Size = new System.Drawing.Size(1378, 37);
+            this.ActionsToolStrip.Size = new System.Drawing.Size(1464, 37);
             this.ActionsToolStrip.TabIndex = 3;
             // 
             // BtnExtremeStop
@@ -296,7 +296,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -309,7 +309,7 @@
             this.stsMain.Location = new System.Drawing.Point(0, 646);
             this.stsMain.Name = "stsMain";
             this.stsMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.stsMain.Size = new System.Drawing.Size(1378, 26);
+            this.stsMain.Size = new System.Drawing.Size(1464, 26);
             this.stsMain.TabIndex = 4;
             this.stsMain.Text = "statusStrip1";
             // 
@@ -343,7 +343,7 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1378, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1464, 28);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -395,7 +395,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1378, 672);
+            this.ClientSize = new System.Drawing.Size(1464, 672);
             this.Controls.Add(this.stsMain);
             this.Controls.Add(this.Query);
             this.Controls.Add(this.ActionsToolStrip);
