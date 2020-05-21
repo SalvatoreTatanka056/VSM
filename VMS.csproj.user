@@ -14,4 +14,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <StartAction>Project</StartAction>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <StartArguments>
+    </StartArguments>
+  </PropertyGroup>
 </Project>

@@ -7,6 +7,7 @@ using System.IO;
 using ICSharpCode.TextEditor;
 using System.Diagnostics;
 using VMS.Properties;
+using ICSharpCode.TextEditor.Actions;
 
 namespace VMS
 {
@@ -275,10 +276,14 @@ namespace VMS
 
             string[] args = Environment.GetCommandLineArgs();
 
+             
             foreach (string arg in args)
             {
+              //  MessageBox.Show(arg);
+
                 if (arg.IndexOf(".vsm") != -1)
                 {
+
                     Query.Text = File.ReadAllText(arg);
 
                 }
@@ -461,6 +466,7 @@ namespace VMS
         private void nuovoScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Query.Text = "";
+            Query.Refresh();
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e)
