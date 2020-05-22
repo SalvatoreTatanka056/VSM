@@ -301,7 +301,7 @@
             this.leggiToolStripMenuItem.Name = "leggiToolStripMenuItem";
             this.leggiToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.leggiToolStripMenuItem.Text = "&Leggi ";
-            this.leggiToolStripMenuItem.Click += new System.EventHandler(this.leggiToolStripMenuItem_Click);
+            this.leggiToolStripMenuItem.Click += new System.EventHandler(this.LeggiToolStripMenuItem_Click);
             // 
             // toolStripStatusLabel1
             // 
@@ -335,14 +335,14 @@
             this.nuovoScriptToolStripMenuItem.Name = "nuovoScriptToolStripMenuItem";
             this.nuovoScriptToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.nuovoScriptToolStripMenuItem.Text = "&Nuovo Script";
-            this.nuovoScriptToolStripMenuItem.Click += new System.EventHandler(this.nuovoScriptToolStripMenuItem_Click);
+            this.nuovoScriptToolStripMenuItem.Click += new System.EventHandler(this.NuovoScriptToolStripMenuItem_Click);
             // 
             // openSriptToolStripMenuItem
             // 
             this.openSriptToolStripMenuItem.Name = "openSriptToolStripMenuItem";
             this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.openSriptToolStripMenuItem.Text = "&Open Script";
-            this.openSriptToolStripMenuItem.Click += new System.EventHandler(this.openSriptToolStripMenuItem_Click);
+            this.openSriptToolStripMenuItem.Click += new System.EventHandler(this.OpenSriptToolStripMenuItem_Click);
             // 
             // saveScriptToolStripMenuItem
             // 
@@ -356,7 +356,7 @@
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.closeToolStripMenuItem.Text = "&Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
             // fontDialog
             // 
@@ -378,9 +378,9 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Virtual Send Message";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
-            this.Load += new System.EventHandler(this.frmMain_Load);
-            this.Click += new System.EventHandler(this.frmMain_Click);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.Click += new System.EventHandler(this.FrmMain_Click);
             this.ActionsToolStrip.ResumeLayout(false);
             this.ActionsToolStrip.PerformLayout();
             this.stsMain.ResumeLayout(false);
