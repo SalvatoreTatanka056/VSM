@@ -7,7 +7,6 @@ using System.IO;
 using ICSharpCode.TextEditor;
 using System.Diagnostics;
 using VMS.Properties;
-using ICSharpCode.TextEditor.Actions;
 
 namespace VMS
 {
@@ -20,8 +19,14 @@ namespace VMS
         public int _iCicli;
         public frmInfoMouse frm;
         public string strReadFile;
+
+        /* Varibili Globali al Modulo Gestione Mouse */
+        private const int MOUSEEVENTF_MOVE = 0x0001;
         private const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
         private const int MOUSEEVENTF_RIGHTUP = 0x0010;
+        private const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
+        private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
+        private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
         public const int MOUSEEVENTF_LEFTDOWN = 0x02;
         public const int MOUSEEVENTF_LEFTUP = 0x04;
         public int m_intX, m_intY;
@@ -35,7 +40,7 @@ namespace VMS
 
         /* Importazione dei Metodi per Gestione Mouse */
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern void Mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
 
         public frmMain()
         {
@@ -55,21 +60,18 @@ namespace VMS
         public static void LeftMouseClick(int xpos, int ypos)
         {
             Cursor.Position = new Point(xpos, ypos);
-            Mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
-            Mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
         }
         public static void RightMouseClick(int xpos, int ypos)
         {
             Cursor.Position = new Point(xpos, ypos);
-            Mouse_event(MOUSEEVENTF_RIGHTDOWN, xpos, ypos, 0, 0);
-            Mouse_event(MOUSEEVENTF_RIGHTUP, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_RIGHTUP, xpos, ypos, 0, 0);
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
         {
-
-
-
 
             frmMain.ActiveForm.WindowState = FormWindowState.Minimized;
             strMacro = Query.Text;
@@ -172,13 +174,16 @@ namespace VMS
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            string tempPath = "";
+
             opFDMain.FileName = "*.exe";
             opFDMain.DefaultExt = ".exe";
             opFDMain.Filter = "Script (*.exe)|*.exe";
 
             if (opFDMain.ShowDialog(this) == DialogResult.OK)
             {
-                _ = opFDMain.FileName;
+                tempPath = opFDMain.FileName;
+
             }
         }
 
@@ -191,15 +196,14 @@ namespace VMS
         {
 
             string dummy = "file.vsm";
-            SaveFileDialog sf = new SaveFileDialog
-            {
-                FileName = dummy,
-                DefaultExt = ".vsm",
-                Filter = "Script (*.vsm)|*.vsm"
-            };
+            string path = "";
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.FileName = dummy;
+            sf.DefaultExt = ".vsm";
+            sf.Filter = "Script (*.vsm)|*.vsm";
             if (sf.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                string path = sf.FileName;
+                path = sf.FileName;
                 File.WriteAllText(path, Query.Text);
             }
         }
@@ -263,19 +267,15 @@ namespace VMS
         }
 
         /* Caricamento Form Principale */
-        private void FrmMain_Load(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
 
             string[] args = Environment.GetCommandLineArgs();
 
-             
             foreach (string arg in args)
             {
-              //  MessageBox.Show(arg);
-
                 if (arg.IndexOf(".vsm") != -1)
                 {
-
                     Query.Text = File.ReadAllText(arg);
 
                 }
@@ -292,7 +292,10 @@ namespace VMS
             images[6] = new Icon("Rotate7.ico");
             images[7] = new Icon("Rotate8.ico");
 
-         /* Gestione Parametri di Default */
+            //pblnThreadTray = true;
+            nfiMain.Icon = images[0];
+
+            /* Gestione Parametri di Default */
             toolStripTextBox3.Text = "1000";
             TStxtCicli.Text = "1";
 
@@ -302,7 +305,7 @@ namespace VMS
         }
 
         /* Dispose di Tutti gli Oggetti e scaricamento della frmMain */
-        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Controls.Clear();
             this.Dispose();
@@ -331,7 +334,7 @@ namespace VMS
         }
 
         /* Chiusura Form Mouse */
-        void Frm_FormClosed(object sender, FormClosedEventArgs e)
+        void frm_FormClosed(object sender, FormClosedEventArgs e)
         {
 
 
@@ -347,6 +350,9 @@ namespace VMS
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+
+            int tot = 0;
+
             if (Convert.ToInt32(TStxtCicli.Text) < 1)
             {
                 TStxtCicli.Text = "1";
@@ -354,7 +360,7 @@ namespace VMS
             }
             else
             {
-                int tot = Convert.ToInt32(TStxtCicli.Text) - 1;
+                tot = Convert.ToInt32(TStxtCicli.Text) - 1;
                 if (tot == 0)
                 {
                     tot += 1;
@@ -394,13 +400,13 @@ namespace VMS
 
         }
 
-        private void LeggiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void leggiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             leggiToolStripMenuItem.Checked = !leggiToolStripMenuItem.Checked;
 
             if (leggiToolStripMenuItem.Checked)
             {
-                Query.Text += "$FNomefile.txt\r\n$1\r\n";
+                Query.Text = Query.Text + "$FNomefile.txt\r\n$1\r\n";
             }
             else
             {
@@ -409,14 +415,15 @@ namespace VMS
             }
         }
 
-        private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
+            nfiMain.Visible = false;
             frmMain.ActiveForm.WindowState = FormWindowState.Normal;
             _iCicli = 0;
         }
 
-        private void NfiMain_BalloonTipClosed(object sender, EventArgs e) => Dispose();
+        private void nfiMain_BalloonTipClosed(object sender, EventArgs e) => Dispose();
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
@@ -429,7 +436,7 @@ namespace VMS
 
         }
 
-        private void FrmMain_Click(object sender, EventArgs e)
+        private void frmMain_Click(object sender, EventArgs e)
         {
             this.Query.Enabled = true;
             BtnBookmark.Enabled = true;
@@ -437,7 +444,7 @@ namespace VMS
             toolStripStatusLabel1.Text = "...";
         }
 
-        private void OpenSriptToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openSriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFile();
         }
@@ -447,34 +454,36 @@ namespace VMS
             SaveFile();
         }
 
-        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void NuovoScriptToolStripMenuItem_Click(object sender, EventArgs e)
+        private void nuovoScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Query.Text = "";
-            Query.Refresh();
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
+            int tot = 0;
+
             if (Convert.ToInt32(TStxtCicli.Text) <= 0)
             {
                 TStxtCicli.Text = "1";
             }
             else
             {
-                int tot = Convert.ToInt32(TStxtCicli.Text) + 1;
+                tot = Convert.ToInt32(TStxtCicli.Text) + 1;
                 TStxtCicli.Text = tot.ToString();
             }
         }
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-  
+            nfiMain.Visible = false;
+            nfiMain.Dispose();
             Application.Exit();
 
         }
     }
-}
+}  //*//

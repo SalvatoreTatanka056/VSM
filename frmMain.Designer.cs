@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.Query = new ICSharpCode.TextEditor.TextEditorControl();
             this.ActionsToolStrip = new System.Windows.Forms.ToolStrip();
@@ -52,6 +53,10 @@
             this.opFDMain = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.nfiMain = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stsMain = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.leggiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +70,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.ActionsToolStrip.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.stsMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +88,7 @@
             this.Query.Margin = new System.Windows.Forms.Padding(4);
             this.Query.Name = "Query";
             this.Query.ShowVRuler = false;
-            this.Query.Size = new System.Drawing.Size(1464, 607);
+            this.Query.Size = new System.Drawing.Size(1378, 607);
             this.Query.TabIndex = 2;
             this.Query.Load += new System.EventHandler(this.Query_Load);
             // 
@@ -111,7 +117,7 @@
             this.toolStripButton3});
             this.ActionsToolStrip.Location = new System.Drawing.Point(0, 28);
             this.ActionsToolStrip.Name = "ActionsToolStrip";
-            this.ActionsToolStrip.Size = new System.Drawing.Size(1464, 37);
+            this.ActionsToolStrip.Size = new System.Drawing.Size(1378, 37);
             this.ActionsToolStrip.TabIndex = 3;
             // 
             // BtnExtremeStop
@@ -272,6 +278,36 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
+            // nfiMain
+            // 
+            this.nfiMain.ContextMenuStrip = this.contextMenuStrip1;
+            this.nfiMain.Text = "Macro Script.";
+            this.nfiMain.Visible = true;
+            this.nfiMain.BalloonTipClosed += new System.EventHandler(this.nfiMain_BalloonTipClosed);
+            this.nfiMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 52);
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
+            this.showToolStripMenuItem.Text = "&Show";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
+            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // stsMain
             // 
             this.stsMain.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -281,7 +317,7 @@
             this.stsMain.Location = new System.Drawing.Point(0, 646);
             this.stsMain.Name = "stsMain";
             this.stsMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.stsMain.Size = new System.Drawing.Size(1464, 26);
+            this.stsMain.Size = new System.Drawing.Size(1378, 26);
             this.stsMain.TabIndex = 4;
             this.stsMain.Text = "statusStrip1";
             // 
@@ -301,7 +337,7 @@
             this.leggiToolStripMenuItem.Name = "leggiToolStripMenuItem";
             this.leggiToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.leggiToolStripMenuItem.Text = "&Leggi ";
-            this.leggiToolStripMenuItem.Click += new System.EventHandler(this.LeggiToolStripMenuItem_Click);
+            this.leggiToolStripMenuItem.Click += new System.EventHandler(this.leggiToolStripMenuItem_Click);
             // 
             // toolStripStatusLabel1
             // 
@@ -315,7 +351,7 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1464, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1378, 28);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -335,14 +371,14 @@
             this.nuovoScriptToolStripMenuItem.Name = "nuovoScriptToolStripMenuItem";
             this.nuovoScriptToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.nuovoScriptToolStripMenuItem.Text = "&Nuovo Script";
-            this.nuovoScriptToolStripMenuItem.Click += new System.EventHandler(this.NuovoScriptToolStripMenuItem_Click);
+            this.nuovoScriptToolStripMenuItem.Click += new System.EventHandler(this.nuovoScriptToolStripMenuItem_Click);
             // 
             // openSriptToolStripMenuItem
             // 
             this.openSriptToolStripMenuItem.Name = "openSriptToolStripMenuItem";
             this.openSriptToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.openSriptToolStripMenuItem.Text = "&Open Script";
-            this.openSriptToolStripMenuItem.Click += new System.EventHandler(this.OpenSriptToolStripMenuItem_Click);
+            this.openSriptToolStripMenuItem.Click += new System.EventHandler(this.openSriptToolStripMenuItem_Click);
             // 
             // saveScriptToolStripMenuItem
             // 
@@ -356,7 +392,7 @@
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.closeToolStripMenuItem.Text = "&Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // fontDialog
             // 
@@ -367,7 +403,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1464, 672);
+            this.ClientSize = new System.Drawing.Size(1378, 672);
             this.Controls.Add(this.stsMain);
             this.Controls.Add(this.Query);
             this.Controls.Add(this.ActionsToolStrip);
@@ -378,11 +414,12 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Virtual Send Message";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
-            this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.Click += new System.EventHandler(this.FrmMain_Click);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
+            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.Click += new System.EventHandler(this.frmMain_Click);
             this.ActionsToolStrip.ResumeLayout(false);
             this.ActionsToolStrip.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.stsMain.ResumeLayout(false);
             this.stsMain.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -407,6 +444,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox3;
+        private System.Windows.Forms.NotifyIcon nfiMain;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -420,6 +458,9 @@
         private System.Windows.Forms.ToolStripMenuItem leggiToolStripMenuItem;
         private Gma.UserActivityMonitor.GlobalEventProvider globalEventProvider1;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.FontDialog fontDialog;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
