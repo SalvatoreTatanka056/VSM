@@ -89,7 +89,6 @@
         #endregion
         private System.Windows.Forms.Label labelMousePosition;
         private Gma.UserActivityMonitor.GlobalEventProvider globalEventProvider1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolTip toolTip1;
     }
 }

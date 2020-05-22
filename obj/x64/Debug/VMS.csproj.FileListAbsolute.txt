@@ -98,4 +98,7 @@ C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\bin\x64\Debug\VSM.exe
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\bin\x64\Debug\VSM.pdb
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x64\Debug\VSM.exe
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x64\Debug\VSM.pdb
-C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x64\Debug\VMS.csprojAssemblyReference.cache
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\bin\x64\Debug\VSM.exe.manifest
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\bin\x64\Debug\VSM.application
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x64\Debug\VSM.exe.manifest
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x64\Debug\VSM.application

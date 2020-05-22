@@ -12,9 +12,7 @@ namespace VMS
 {
     public partial class frmFind : Form
     {
-
-        TextEditorControl _editor;
-        int _iPos;
+        readonly TextEditorControl _editor;
         int iReCode;
         string strScript;
         int startLine;
@@ -27,9 +25,8 @@ namespace VMS
             InitializeComponent();
         }
 
-        private void frmFind_Load(object sender, EventArgs e)
+        private void FrmFind_Load(object sender, EventArgs e)
         {
-            _iPos = 0;
             startLine = 0;
             startCol = 0;
             endLine = 0;
@@ -45,7 +42,7 @@ namespace VMS
             return strList;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
 
             string lstrMessaggio = "Ricerca Terminata";
@@ -72,7 +69,7 @@ namespace VMS
                     return;
                 }
 
-                startLine = startLine + (iReCode - 1);
+                startLine += (iReCode - 1);
                 TextLocation start = new TextLocation(startCol, startLine);
 
                 int endCol = startCol + txtRicerca.Text.ToString().Length;
@@ -91,21 +88,21 @@ namespace VMS
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void txtRicerca_TextChanged(object sender, EventArgs e)
+        private void TxtRicerca_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void frmFind_KeyDown(object sender, KeyEventArgs e)
+        private void FrmFind_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button2_Click(button2, new EventArgs());
+                Button2_Click(button2, new EventArgs());
             }
         }
     }

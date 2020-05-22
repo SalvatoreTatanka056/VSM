@@ -42,7 +42,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "&Annulla";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button2
             // 
@@ -52,7 +52,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "&Cerca ";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // txtRicerca
             // 
@@ -61,7 +61,7 @@
             this.txtRicerca.Name = "txtRicerca";
             this.txtRicerca.Size = new System.Drawing.Size(329, 23);
             this.txtRicerca.TabIndex = 4;
-            this.txtRicerca.TextChanged += new System.EventHandler(this.txtRicerca_TextChanged);
+            this.txtRicerca.TextChanged += new System.EventHandler(this.TxtRicerca_TextChanged);
             // 
             // frmFind
             // 
@@ -77,8 +77,8 @@
             this.Name = "frmFind";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cerca";
-            this.Load += new System.EventHandler(this.frmFind_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFind_KeyDown);
+            this.Load += new System.EventHandler(this.FrmFind_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmFind_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
