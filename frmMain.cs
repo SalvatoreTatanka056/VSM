@@ -460,6 +460,7 @@ namespace VMS
         private void nuovoScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Query.Text = "";
+            Query.Refresh();
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e)
