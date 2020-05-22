@@ -1,0 +1,1 @@
+﻿1>------ Inizio compilazione: Progetto: VMS, Configurazione: Debug x64 ------

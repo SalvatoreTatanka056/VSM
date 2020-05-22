@@ -53,7 +53,6 @@ C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\bin\Debug\VSM.pdb
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\bin\Debug\AutoItX3.Assembly.dll
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\bin\Debug\AutoItX3.Assembly.xml
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\bin\Debug\Interop.WMPLib.dll
-C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\VMS.csprojAssemblyReference.cache
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\Interop.WMPLib.dll
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\VMS.csproj.ResolveComReference.cache
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\VMS.frmHelp.resources

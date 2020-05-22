@@ -203,7 +203,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="VMS_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alarm_Padlock_Icon_16.png" />

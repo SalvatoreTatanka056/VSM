@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.Query = new ICSharpCode.TextEditor.TextEditorControl();
             this.ActionsToolStrip = new System.Windows.Forms.ToolStrip();
@@ -53,10 +52,6 @@
             this.opFDMain = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.nfiMain = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stsMain = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.leggiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +65,6 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.ActionsToolStrip.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.stsMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -278,36 +272,6 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
-            // nfiMain
-            // 
-            this.nfiMain.ContextMenuStrip = this.contextMenuStrip1;
-            this.nfiMain.Text = "Macro Script.";
-            this.nfiMain.Visible = true;
-            this.nfiMain.BalloonTipClosed += new System.EventHandler(this.nfiMain_BalloonTipClosed);
-            this.nfiMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 52);
-            // 
-            // showToolStripMenuItem
-            // 
-            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
-            this.showToolStripMenuItem.Text = "&Show";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
-            this.exitToolStripMenuItem.Text = "&Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // stsMain
             // 
             this.stsMain.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -419,7 +383,6 @@
             this.Click += new System.EventHandler(this.frmMain_Click);
             this.ActionsToolStrip.ResumeLayout(false);
             this.ActionsToolStrip.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.stsMain.ResumeLayout(false);
             this.stsMain.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -444,7 +407,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox3;
-        private System.Windows.Forms.NotifyIcon nfiMain;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -458,9 +420,6 @@
         private System.Windows.Forms.ToolStripMenuItem leggiToolStripMenuItem;
         private Gma.UserActivityMonitor.GlobalEventProvider globalEventProvider1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.FontDialog fontDialog;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
