@@ -348,7 +348,7 @@
             // 
             this.saveScriptToolStripMenuItem.Name = "saveScriptToolStripMenuItem";
             this.saveScriptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveScriptToolStripMenuItem.Text = "S&ave Script";
+            this.saveScriptToolStripMenuItem.Text = "S&ave As ... ";
             this.saveScriptToolStripMenuItem.Click += new System.EventHandler(this.saveScriptToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem

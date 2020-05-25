@@ -189,12 +189,13 @@ namespace VMS
 
         private void BtnScegliApplicazione_Click(object sender, EventArgs e)
         {
-            SaveFile();
+            SaveFileName();
         }
+
+        public string file_name_vsm = "file.vsm";
 
         private void SaveFile()
         {
-
             string dummy = "file.vsm";
             string path = "";
             SaveFileDialog sf = new SaveFileDialog();
@@ -204,14 +205,19 @@ namespace VMS
             if (sf.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
                 path = sf.FileName;
+                file_name_vsm = path;
                 File.WriteAllText(path, Query.Text);
             }
+        }
+        private void SaveFileName()
+        {
+            File.WriteAllText(file_name_vsm, Query.Text);
         }
 
         private void BtnOpen_Click(object sender, EventArgs e)
         {
-
             OpenFile();
+            Query.Refresh();
         }
 
 
@@ -226,6 +232,8 @@ namespace VMS
             {
                 System.IO.StreamReader sr = new
                     System.IO.StreamReader(opFDMain.FileName);
+                file_name_vsm = opFDMain.FileName;
+
                 Query.Text = sr.ReadToEnd();
                 sr.Close();
             }

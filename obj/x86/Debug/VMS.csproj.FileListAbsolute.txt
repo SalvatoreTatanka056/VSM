@@ -69,3 +69,4 @@ C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\VSM.app
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\VMS.csproj.CopyComplete
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\VSM.exe
 C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\VSM.pdb
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\vsm-v1\obj\x86\Debug\VMS.csprojAssemblyReference.cache
