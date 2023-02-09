@@ -206,9 +206,12 @@ namespace VMS
 
 
                 notifyIcon1.ShowBalloonTip(1000, "Script", tmp_operation, ToolTipIcon.Info);
-                pblnThreadTray = false;
+               // pblnThreadTray = false;
             }
-    }
+
+            notifyIcon1.ShowBalloonTip(1000, "Script Terminato...", "Script Terminato...", ToolTipIcon.Info);
+
+        }
 
         /// <summary>
         /// Scelta Eseguibile su cui Inviare Messaggi
@@ -608,8 +611,6 @@ namespace VMS
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pblnThreadTray = false;
-            childThread2.Abort();
-            childThread1.Abort();
             notifyIcon1.Visible = false;
             notifyIcon1.Dispose();
             Application.Exit();
