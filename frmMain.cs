@@ -210,7 +210,7 @@ namespace VMS
             }
 
             notifyIcon1.ShowBalloonTip(1000, "Script Terminato...", "Script Terminato...", ToolTipIcon.Info);
-
+            MessageBox.Show("Script Terminato...");
         }
 
         /// <summary>
