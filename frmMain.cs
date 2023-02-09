@@ -10,6 +10,7 @@ using VMS.Properties;
 using System.Runtime.InteropServices;
 using ProgramUsage;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace VMS
 {
@@ -392,14 +393,27 @@ namespace VMS
             Application.Exit();
         }
 
+        public bool lblnActive = false;
+
         /* Recupera Coordinate X,Y del Click Mouse da ripetere */
         private void BtnBookmark_Click(object sender, EventArgs e)
         {
+            lblnActive = true;
+
             if (mouse)
             {
-             
                 MouseHook.stop();
                 mouse = false;
+                tlbl_posizione_mouse.BackColor = Color.Red;
+                tlbl_posizione_mouse.Invalidate();
+
+                if(Query.Text.Contains("XY_"))
+                {
+                    int foundS = Query.Text.LastIndexOf("XY_");
+                    Query.Text = Query.Text.Remove(foundS);
+                    Query.Invalidate(); 
+
+                }
             }
             else
             {
@@ -410,9 +424,14 @@ namespace VMS
                 {
                     first = false;
                     MouseHook.MouseAction += new EventHandler(Event);
+
                 }
-               
+                tlbl_posizione_mouse.BackColor = Color.GreenYellow;
+                tlbl_posizione_mouse.Invalidate();
+
             }
+
+            lblnActive = false;
 
         }
 
@@ -433,7 +452,9 @@ namespace VMS
             {
                 case "WM_LBUTTONDOWN":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
+                
                     Query.Text = Query.Text + string.Format("XY_L {0}-{1};\n", temp.pt.x, temp.pt.y);
+                  
                     break;
                 case "WM_LBUTTONUP":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
@@ -443,7 +464,9 @@ namespace VMS
                     break;
                 case "WM_RBUTTONDOWN":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
+                 
                     Query.Text = Query.Text + string.Format("XY_R {0}-{1};\n", temp.pt.x, temp.pt.y);
+                    
                     break;
                 case "WM_MOUSEWHEEL":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
