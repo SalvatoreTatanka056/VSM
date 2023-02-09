@@ -46,9 +46,26 @@ namespace VMS
         const uint EVENT_OBJECT_NAMECHANGE = 0x800C;
         const uint WINEVENT_OUTOFCONTEXT = 0;
 
+        /* Varibili Globali al Modulo Gestione Mouse */
+        private const int MOUSEEVENTF_MOVE = 0x0001;
+        private const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
+        private const int MOUSEEVENTF_RIGHTUP = 0x0010;
+        private const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
+        private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
+        private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
+        public const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        public const int MOUSEEVENTF_LEFTUP = 0x04;
+
         IntPtr hhook;
 
-        // static WinEventDelegate procDelegate = new WinEventDelegate(WinEventProc);
+        /* Importazione dei Metodi per Gestione Mouse */
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern bool SetCursorPos(int x, int y);
+
+        /* Importazione dei Metodi per Gestione Mouse */
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
 
         Thread PreformanceThread;
         Thread SaveListenThread;
@@ -75,23 +92,19 @@ namespace VMS
 
         }
 
-        /// <summary>
-        /// Simula un'azione click-and-release del tasto sinistro del mouse
-        /// </summary>
-        /// <param name="xpos"></param>
-        /// <param name="ypos"></param>
+
         public static void LeftMouseClick(int xpos, int ypos)
         {
-          
+            Cursor.Position = new Point(xpos, ypos);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
         }
 
-        /// <summary>
-        /// Simula un'azione click-and-release del tasto destro del mouse
-        /// </summary>
-        /// <param name="xpos"></param>
-        /// <param name="ypos"></param>
         public static void RightMouseClick(int xpos, int ypos)
         {
+            Cursor.Position = new Point(xpos, ypos);
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_RIGHTUP, xpos, ypos, 0, 0);
         }
 
         /// Avvio Script Virtual SendMessage
