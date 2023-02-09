@@ -387,8 +387,6 @@ namespace VMS
              
                 MouseHook.stop();
                 mouse = false;
-
-                Query.Text = Query.Text + string.Format("XY_L {0}-{1};\n", m_intX, m_intY);
             }
             else
             {
