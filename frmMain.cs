@@ -268,8 +268,7 @@ namespace VMS
                 System.IO.StreamReader sr = new
                    System.IO.StreamReader(openFileDialog1.FileName);
                 try
-                {
-                    MessageBox.Show(sr.ReadToEnd());
+                { 
 
                     Query.Text = sr.ReadToEnd();
                     sr.Close();
