@@ -556,6 +556,45 @@ namespace VMS
             _iCicli = 0;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            lblnActive = true;
+
+            if (mouse)
+            {
+                MouseHook.stop();
+                mouse = false;
+                tlbl_posizione_mouse.BackColor = Color.Red;
+                tlbl_posizione_mouse.Invalidate();
+
+                if (Query.Text.Contains("XY_"))
+                {
+                    int foundS = Query.Text.LastIndexOf("XY_");
+                    Query.Text = Query.Text.Remove(foundS);
+                    Query.Invalidate();
+
+                }
+            }
+            else
+            {
+                appendText(" ----- Mouse Hook Active -----");
+                mouse = true;
+                MouseHook.Start();
+                if (first)
+                {
+                    first = false;
+                    MouseHook.MouseAction += new EventHandler(Event);
+
+                }
+                tlbl_posizione_mouse.BackColor = Color.GreenYellow;
+                tlbl_posizione_mouse.Invalidate();
+
+            }
+
+            lblnActive = false;
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pblnThreadTray = false;

@@ -67,6 +67,7 @@
             this.globalEventProvider1 = new Gma.UserActivityMonitor.GlobalEventProvider();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -199,6 +200,7 @@
             // BtnBookmark
             // 
             this.BtnBookmark.AutoSize = false;
+            this.BtnBookmark.CheckOnClick = true;
             this.BtnBookmark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.BtnBookmark.Image = ((System.Drawing.Image)(resources.GetObject("BtnBookmark.Image")));
             this.BtnBookmark.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -292,7 +294,6 @@
             this.notifyIcon1.Text = "Macro Script.";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
-            
             // 
             // contextMenuStrip1
             // 
@@ -301,7 +302,7 @@
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(104, 48);
-             // 
+            // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
@@ -352,7 +353,6 @@
             this.tlbl_posizione_mouse.Size = new System.Drawing.Size(161, 17);
             this.tlbl_posizione_mouse.Text = "x={0:####}; y={1:####}";
             // 
-         // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -366,11 +366,22 @@
             this.fontDialog.AllowVerticalFonts = false;
             this.fontDialog.ShowEffects = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(173, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1155, 451);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.Query);
             this.Controls.Add(this.ActionsToolStrip);
@@ -431,5 +442,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.FontDialog fontDialog;
+        private System.Windows.Forms.Button button1;
     }
 }
