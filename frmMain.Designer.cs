@@ -202,6 +202,7 @@
             this.BtnBookmark.AutoSize = false;
             this.BtnBookmark.CheckOnClick = true;
             this.BtnBookmark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnBookmark.Enabled = false;
             this.BtnBookmark.Image = ((System.Drawing.Image)(resources.GetObject("BtnBookmark.Image")));
             this.BtnBookmark.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.BtnBookmark.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -368,11 +369,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(173, 7);
+            this.button1.Location = new System.Drawing.Point(219, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(70, 24);
             this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
+            this.button1.Text = "Mouse";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

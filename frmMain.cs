@@ -267,9 +267,20 @@ namespace VMS
             {
                 System.IO.StreamReader sr = new
                    System.IO.StreamReader(openFileDialog1.FileName);
-                Query.Text = sr.ReadToEnd();
-                sr.Close();
+                try
+                {
+                    MessageBox.Show(sr.ReadToEnd());
+
+                    Query.Text = sr.ReadToEnd();
+                    sr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
             }
+
         }
 
         /// <summary>
