@@ -352,10 +352,7 @@
             this.tlbl_posizione_mouse.Size = new System.Drawing.Size(161, 17);
             this.tlbl_posizione_mouse.Text = "x={0:####}; y={1:####}";
             // 
-            // globalEventProvider1
-            // 
-            this.globalEventProvider1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.HookManager_MouseMove);
-            // 
+         // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);

@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace VMS
 {
@@ -36,11 +39,27 @@ namespace VMS
         {
             if (lblmove)
             {
+                //MouseHook.stop();
+                //mouse = false;
+                //button3.BackColor = Color.Red;
+
                 labelMousePosition.Text = string.Format("x={0:0000}; y={1:0000}", e.X, e.Y);
 
                 m_intX = e.X;
                 m_intY = e.Y;
 
+            }
+            else
+            {
+                lblmove = true;
+
+                //MouseHook.Start();
+                //if (first)
+                //{
+                //    first = false;
+                //    MouseHook.MouseAction += new EventHandler(Event);
+                //}
+            
             }
         }
 

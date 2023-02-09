@@ -7,6 +7,9 @@ using System.IO;
 using ICSharpCode.TextEditor;
 using System.Diagnostics;
 using VMS.Properties;
+using System.Runtime.InteropServices;
+using ProgramUsage;
+using System.Collections.Generic;
 
 namespace VMS
 {
@@ -24,26 +27,34 @@ namespace VMS
         public Thread childThread2;
         public TestFormComponent frm;
         public string strReadFile;
-
-        /* Varibili Globali al Modulo Gestione Mouse */
-        private const int MOUSEEVENTF_MOVE = 0x0001;
-        private const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
-        private const int MOUSEEVENTF_RIGHTUP = 0x0010;
-        private const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
-        private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
-        private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
-        public const int MOUSEEVENTF_LEFTDOWN = 0x02;
-        public const int MOUSEEVENTF_LEFTUP = 0x04;
+        bool mouse = false;
+        bool first = true;
         public int m_intX, m_intY;
 
+        GlobalKeyboardHook gHook;
+        delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType,
+        IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime);
 
-        /* Importazione dei Metodi per Gestione Mouse */
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        static extern bool SetCursorPos(int x , int y);
+        [DllImport("user32.dll")]
+        static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr
+           hmodWinEventProc, WinEventDelegate lpfnWinEventProc, uint idProcess,
+           uint idThread, uint dwFlags);
 
-        /* Importazione dei Metodi per Gestione Mouse */
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern void mouse_event(int dwFlags , int dx , int dy , int cButtons , int dwExtraInfo);
+        [DllImport("user32.dll")]
+        static extern bool UnhookWinEvent(IntPtr hWinEventHook);
+
+        const uint EVENT_OBJECT_NAMECHANGE = 0x800C;
+        const uint WINEVENT_OUTOFCONTEXT = 0;
+
+        IntPtr hhook;
+
+        // static WinEventDelegate procDelegate = new WinEventDelegate(WinEventProc);
+
+        Thread PreformanceThread;
+        Thread SaveListenThread;
+        Thread ProgramListenThread;
+        public Label label;
+        public Label l2;
 
         /// <summary>
         ///  Implementazione Costruttore frmMain
@@ -51,7 +62,7 @@ namespace VMS
         public frmMain()
         {
             InitializeComponent();
-           
+            
             try
             {
                 HighlightingManager.Manager.AddSyntaxModeFileProvider(new FileSyntaxModeProvider("SintaxHighLight\\"));
@@ -71,9 +82,7 @@ namespace VMS
         /// <param name="ypos"></param>
         public static void LeftMouseClick(int xpos, int ypos)
         {
-            SetCursorPos(xpos, ypos);
-            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
-            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
+          
         }
 
         /// <summary>
@@ -83,9 +92,6 @@ namespace VMS
         /// <param name="ypos"></param>
         public static void RightMouseClick(int xpos, int ypos)
         {
-            SetCursorPos(xpos, ypos);
-            mouse_event(MOUSEEVENTF_RIGHTDOWN, xpos, ypos, 0, 0);
-            mouse_event(MOUSEEVENTF_RIGHTUP, xpos, ypos, 0, 0);
         }
 
         /// Avvio Script Virtual SendMessage
@@ -358,69 +364,87 @@ namespace VMS
             TStxtCicli.Enabled = false;
             toolStripTextBox3.Enabled = false;
 
-      
-
-
         }
 
         /* Dispose di Tutti gli Oggetti e scaricamento della frmMain */
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if(gHook != null) gHook.unhook();
+            MouseHook.stop();
+            mouse = false;
+            UnhookWinEvent(hhook);
             pblnThreadTray = false;
             this.Controls.Clear();
             this.Dispose();
-            globalEventProvider1.Dispose();
             Application.Exit();
         }
 
         /* Recupera Coordinate X,Y del Click Mouse da ripetere */
         private void BtnBookmark_Click(object sender, EventArgs e)
         {
+            if (mouse)
+            {
+             
+                MouseHook.stop();
+                mouse = false;
 
-            frm = new TestFormComponent(this);
-            frm.FormClosed += new FormClosedEventHandler(frm_FormClosed);
-
-            frm.Show();
-
-            System.Diagnostics.Process proc = new System.Diagnostics.Process();
-            proc.EnableRaisingEvents = false;
-            proc.StartInfo.FileName = toolStripTextBox1.Text;
-            proc.StartInfo.Arguments = toolStripTextBox1.Text;
-
-            if (toolStripTextBox1.Text != "")
-                proc.Start();
+                Query.Text = Query.Text + string.Format("XY_L {0}-{1};\n", m_intX, m_intY);
+            }
             else
             {
-                proc.Dispose();
+                appendText(" ----- Mouse Hook Active -----");
+                mouse = true;
+                MouseHook.Start();
+                if (first)
+                {
+                    first = false;
+                    MouseHook.MouseAction += new EventHandler(Event);
+                }
+               
             }
+
         }
 
-        private void HookManager_MouseMove(object sender, MouseEventArgs e)
+        delegate void AppendTextDelegate(string text);
+        public void appendText(string s)
         {
-            tlbl_posizione_mouse.Text = string.Format("x={0:0000}; y={1:0000}", e.X, e.Y);
+          
+            tlbl_posizione_mouse.Text = s ;
+          
         }
 
-
-        /* Chiusura Form Mouse */
-        void frm_FormClosed(object sender, FormClosedEventArgs e)
+        private void Event(object sender, EventArgs e)
         {
-            if (frm != null)
+
+            MouseHook.MSLLHOOKSTRUCT temp = (MouseHook.MSLLHOOKSTRUCT)sender;
+
+            switch (temp.MouseAction)
             {
-                try
-                {
-                    /* Chiusura Processo Aperto in Corso */
-                    Process[] pr = Process.GetProcessesByName(toolStripTextBox1.Text);
-                    for (int i = 0; i < pr.Length; i++)
-                    {
-                        pr[0].CloseMainWindow();
-                    }
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                frm = null;
+                case "WM_LBUTTONDOWN":
+                    appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
+                    Query.Text = Query.Text + string.Format("XY_L {0}-{1};\n", temp.pt.x, temp.pt.y);
+                    break;
+                case "WM_LBUTTONUP":
+                    appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
+                    break;
+                case "WM_RBUTTONUP":
+                    appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
+                    break;
+                case "WM_RBUTTONDOWN":
+                    appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
+                    Query.Text = Query.Text + string.Format("XY_R {0}-{1};\n", temp.pt.x, temp.pt.y);
+                    break;
+                case "WM_MOUSEWHEEL":
+                    appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
+                    break;
+                case "WM_MOUSEMOVE":
+                    break;
+                case "WM_MOUSEWHEELDOWN":
+                    appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
+                    break;
+                default:
+                    Console.WriteLine("Unknown mouse event!");
+                    break;
             }
 
         }
@@ -457,9 +481,7 @@ namespace VMS
 
         private void toolStripButton2_Click_1(object sender, EventArgs e)
         {
-
             strReadFile = "";
-
 
             var editor = Query;
             if (editor != null)
@@ -470,7 +492,6 @@ namespace VMS
                     editor.Font = fontDialog.Font;
                 }
             }
-
         }
 
         private void leggiToolStripMenuItem_Click(object sender, EventArgs e)

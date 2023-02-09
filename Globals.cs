@@ -25,5 +25,6 @@ namespace VMS
 				(one.G + two.G) >> 1,
 				(one.B + two.B) >> 1);
 		}
+
 	}
 }

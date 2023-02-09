@@ -58,7 +58,7 @@
             this.labelWheel.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWheel.Location = new System.Drawing.Point(64, 114);
             this.labelWheel.Name = "labelWheel";
-            this.labelWheel.Size = new System.Drawing.Size(106, 16);
+            this.labelWheel.Size = new System.Drawing.Size(105, 16);
             this.labelWheel.TabIndex = 9;
             this.labelWheel.Text = "Wheel={0:####}";
             // 
@@ -69,7 +69,7 @@
             this.labelMousePosition.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMousePosition.Location = new System.Drawing.Point(12, 23);
             this.labelMousePosition.Name = "labelMousePosition";
-            this.labelMousePosition.Size = new System.Drawing.Size(162, 16);
+            this.labelMousePosition.Size = new System.Drawing.Size(161, 16);
             this.labelMousePosition.TabIndex = 7;
             this.labelMousePosition.Text = "x={0:####}; y={1:####}";
             // 
