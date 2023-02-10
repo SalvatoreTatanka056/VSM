@@ -64,7 +64,6 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.leggiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlbl_posizione_mouse = new System.Windows.Forms.ToolStripStatusLabel();
-            this.globalEventProvider1 = new Gma.UserActivityMonitor.GlobalEventProvider();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.button1 = new System.Windows.Forms.Button();
@@ -369,9 +368,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(219, 0);
+            this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 24);
+            this.button1.Size = new System.Drawing.Size(74, 24);
             this.button1.TabIndex = 6;
             this.button1.Text = "Mouse";
             this.button1.UseVisualStyleBackColor = true;
@@ -437,7 +436,6 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem leggiToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel tlbl_posizione_mouse;
-        private Gma.UserActivityMonitor.GlobalEventProvider globalEventProvider1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
