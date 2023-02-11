@@ -156,14 +156,14 @@ namespace VMS
                
                 if(toolStripTextBox1.Text.Length > 0)
                 {
-                    Query.Text = "";
-                    if (strMacro.Substring(0, 2) != "T=")
-                    {
-                        strMacro = strMacro.Insert(0, "T=5000;\n");
+                    //Query.Text = "";
+                    //if (strMacro.Substring(0, 2) != "T=")
+                    //{
+                    //    strMacro = strMacro.Insert(0, "T=5000;\n");
 
-                    }
+                    //}
 
-                    Query.Text = strMacro;
+                    //Query.Text = strMacro;
 
                     try
                     {
