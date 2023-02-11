@@ -161,12 +161,30 @@ namespace VMS
 
                 string[] str = strCompilazione.Split(';');
 
+                if(toolStripTextBox1.Text.Length > 0)
+                {
+                    try
+                    {
+                        Process.Start(toolStripTextBox1.Text);
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                   
+                }
+
                 Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
+
+
+
 
                 /* importante posizionare i programmi aperti nella stessa posizione
                     * ( oppure non utilizzare i click del mouse per alcune operazioni ) */
                 foreach (string strSendMessage in str)
                 {
+                    
 
                     /* Gestione Timer ... */
                     if (strSendMessage.Length > 1 && strSendMessage.Substring(0 , 2) == "T=")
@@ -194,8 +212,17 @@ namespace VMS
                     }
                     else
                     {
-                        SendKeys.SendWait(strSendMessage);
-                        Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
+                        try
+                        {
+                            SendKeys.SendWait(strSendMessage);
+                            Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
                     }
 
                     Application.DoEvents();
