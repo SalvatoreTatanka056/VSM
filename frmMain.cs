@@ -163,12 +163,12 @@ namespace VMS
 
                 Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
 
-                /* importante posizionare i programmi aperti nella posiziona solita 
+                /* importante posizionare i programmi aperti nella stessa posizione
                     * ( oppure non utilizzare i click del mouse per alcune operazioni ) */
                 foreach (string strSendMessage in str)
                 {
 
-                    /* Gestione Mouse ... */
+                    /* Gestione Timer ... */
                     if (strSendMessage.Length > 1 && strSendMessage.Substring(0 , 2) == "T=")
                     {
                         string strTimer = strSendMessage.Substring(2).ToString();
