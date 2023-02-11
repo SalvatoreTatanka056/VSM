@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using ProgramUsage;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using System.Collections;
 
 namespace VMS
 {
@@ -152,28 +153,39 @@ namespace VMS
 
             for (int i = 0 ; i < _iCicli ; i++)
             {
-                /* Compila Script */
-                string strCompilazione = "";
-                strCompilazione = strMacro.Replace("\n" , "");
-                strCompilazione = strCompilazione.Replace("\r" , "");
-                strCompilazione = strCompilazione.Replace("\n" , "");
-                strCompilazione = strCompilazione.Replace("\t" , "");
-
-                string[] str = strCompilazione.Split(';');
-
+               
                 if(toolStripTextBox1.Text.Length > 0)
                 {
+                    Query.Text = "";
+                    if (strMacro.Substring(0, 2) != "T=")
+                    {
+                        strMacro = strMacro.Insert(0, "T=5000;\n");
+
+                    }
+
+                    Query.Text = strMacro;
+
                     try
                     {
+
                         Process.Start(toolStripTextBox1.Text);
                     }
-                    catch (Exception)
-                    {
-
-                        throw;
+                    catch (Exception ex)
+                    { 
+                        MessageBox.Show(ex.Message);
+                        
                     }
                    
                 }
+
+                /* Compila Script */
+                string strCompilazione = "";
+                strCompilazione = strMacro.Replace("\n", "");
+                strCompilazione = strCompilazione.Replace("\r", "");
+                strCompilazione = strCompilazione.Replace("\n", "");
+                strCompilazione = strCompilazione.Replace("\t", "");
+
+                string[] str = strCompilazione.Split(';');
 
                 Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
 
@@ -218,10 +230,10 @@ namespace VMS
                             Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
 
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-                            throw;
+                            MessageBox.Show(ex.Message);
+                            
                         }
                     }
 
