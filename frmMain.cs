@@ -196,7 +196,6 @@ namespace VMS
                     * ( oppure non utilizzare i click del mouse per alcune operazioni ) */
                 foreach (string strSendMessage in str)
                 {
-                    
 
                     /* Gestione Timer ... */
                     if (strSendMessage.Length > 1 && strSendMessage.Substring(0 , 2) == "T=")
