@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.Query = new ICSharpCode.TextEditor.TextEditorControl();
             this.ActionsToolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.BtnExtremeStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.BtnComment = new System.Windows.Forms.ToolStripButton();
@@ -67,6 +66,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.button1 = new System.Windows.Forms.Button();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -91,7 +93,9 @@
             this.ActionsToolStrip.AutoSize = false;
             this.ActionsToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ActionsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator8,
             this.toolStripLabel1,
+            this.toolStripSeparator9,
             this.BtnExtremeStop,
             this.toolStripSeparator1,
             this.BtnComment,
@@ -115,12 +119,6 @@
             this.ActionsToolStrip.Name = "ActionsToolStrip";
             this.ActionsToolStrip.Size = new System.Drawing.Size(1155, 30);
             this.ActionsToolStrip.TabIndex = 3;
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(19, 27);
-            this.toolStripLabel1.Text = "    ";
             // 
             // BtnExtremeStop
             // 
@@ -376,6 +374,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(23, 27);
+            this.toolStripLabel1.Text = "    ";
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 30);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 30);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,7 +437,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox3;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -442,5 +457,8 @@
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.FontDialog fontDialog;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton toolStripLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
     }
 }
