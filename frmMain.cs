@@ -646,6 +646,11 @@ namespace VMS
             lblnActive = false;
         }
 
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            Query.Text = "";
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pblnThreadTray = false;
