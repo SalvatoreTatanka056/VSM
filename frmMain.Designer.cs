@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.Query = new ICSharpCode.TextEditor.TextEditorControl();
             this.ActionsToolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.BtnExtremeStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.BtnComment = new System.Windows.Forms.ToolStripButton();
@@ -66,9 +69,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.button1 = new System.Windows.Forms.Button();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -84,7 +84,7 @@
             this.Query.Location = new System.Drawing.Point(0, 54);
             this.Query.Name = "Query";
             this.Query.ShowVRuler = false;
-            this.Query.Size = new System.Drawing.Size(1155, 397);
+            this.Query.Size = new System.Drawing.Size(1168, 459);
             this.Query.TabIndex = 2;
             this.Query.Load += new System.EventHandler(this.Query_Load);
             // 
@@ -117,8 +117,27 @@
             this.toolStripButton2});
             this.ActionsToolStrip.Location = new System.Drawing.Point(0, 24);
             this.ActionsToolStrip.Name = "ActionsToolStrip";
-            this.ActionsToolStrip.Size = new System.Drawing.Size(1155, 30);
+            this.ActionsToolStrip.Size = new System.Drawing.Size(1168, 30);
             this.ActionsToolStrip.TabIndex = 3;
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 30);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(23, 27);
+            this.toolStripLabel1.Text = "    ";
+            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 30);
             // 
             // BtnExtremeStop
             // 
@@ -319,9 +338,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
             this.tlbl_posizione_mouse});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 429);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 491);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1155, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1168, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -355,7 +374,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1155, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1168, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -374,30 +393,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(23, 27);
-            this.toolStripLabel1.Text = "    ";
-            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 30);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 30);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 451);
+            this.ClientSize = new System.Drawing.Size(1168, 513);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.Query);
