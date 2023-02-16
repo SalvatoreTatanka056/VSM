@@ -110,8 +110,14 @@ namespace VMS
                     this.Query.Select((index + startIndex), word.Length);
                     this.Query.SelectionColor = color;
                     //Query.SelectionFont = Query.Font;
+                    Query.SelectionFont = new Font(Query.Font, FontStyle.Bold);
+                    this.Query.Select((index + startIndex), word.Length);
                     this.Query.Select(selectStart, 0);
                     this.Query.SelectionColor = Color.Black;
+                    Query.SelectionFont = new Font(Query.Font, FontStyle.Regular);
+                    this.Query.Select(selectStart, 0);
+
+
                 }
             }
         }
@@ -672,6 +678,8 @@ namespace VMS
 
         private void Query_TextChanged(object sender, EventArgs e)
         {
+
+           
             this.CheckKeyword("BACKSPACE", Color.Green, 0);
             this.CheckKeyword("BREAK", Color.Green, 0);
             this.CheckKeyword("CAPSLOCK", Color.Green, 0);
@@ -700,6 +708,7 @@ namespace VMS
             this.CheckKeyword("T=", Color.Green, 0);
             this.CheckKeyword("XY_L", Color.Green, 0);
             this.CheckKeyword("XY_R", Color.Green, 0);
+       
 
 
         }
