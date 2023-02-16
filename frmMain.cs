@@ -114,7 +114,7 @@ namespace VMS
                     this.Query.SelectionColor = Color.Black;
                     Query.SelectionFont = new Font(Query.Font, FontStyle.Regular);
                     this.Query.Select(selectStart, 0);
-
+-
                 }
             }
         }
