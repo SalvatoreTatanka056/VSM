@@ -61,8 +61,7 @@
             this.txtRicerca.Name = "txtRicerca";
             this.txtRicerca.Size = new System.Drawing.Size(329, 23);
             this.txtRicerca.TabIndex = 4;
-            this.txtRicerca.TextChanged += new System.EventHandler(this.txtRicerca_TextChanged);
-            // 
+           // 
             // frmFind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

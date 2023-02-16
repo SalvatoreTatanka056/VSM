@@ -16,12 +16,10 @@ namespace VMS
     {
 
         public CCRichTextBox _editor;
-        int _iPos;
-        int iReCode;
-        string strScript;
         int startLine;
-        int startCol;
         int endLine;
+        public int endCol;
+
 
         public frmFind(CCRichTextBox editor)
         {
@@ -31,61 +29,43 @@ namespace VMS
 
         private void frmFind_Load(object sender, EventArgs e)
         {
-            _iPos = 0;
             startLine = 0;
-            startCol = 0;
             endLine = 0;
-            strScript = Application.OpenForms["frmMain"].Controls["Query"].Text;
+        
         }
 
-        private string[] GetLine(string strScript)
-        {
-
-            strScript += "\n";
-            string[] strListTmp = { "\n" };
-            string[] strList = strScript.Split(strListTmp,StringSplitOptions.RemoveEmptyEntries);
-            return strList;
-        }
-
-        public int endCol;
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-
-
             string lstrMessaggio = "Ricerca Terminata";
             string lstrTitolo = "Ricerca Stringa" ;
             DialogResult DlgRes;
 
-            _editor.SelectionStart = startCol;
-            _editor.SelectionLength = endCol;
-            _editor.SelectionBackColor = Color.White;
-
-            if (txtRicerca.Text == "" || string.IsNullOrEmpty(strScript))
-                return;
-
             try
             {
-                string[] strList = GetLine(strScript.Substring(0, Convert.ToInt16(strScript.IndexOf(txtRicerca.Text) + txtRicerca.Text.Length)));
-                iReCode =  strList.Length;
 
-                startCol = strList[iReCode-1].IndexOf(txtRicerca.Text);
-
-                if (startCol == -1)
+                if (startLine == -1)
                 {
                     startLine = 0;
-                    startCol = 0;
                     endLine = 0;
-                    strScript = Application.OpenForms["frmMain"].Controls["Query"].Text;
-                    DlgRes =  MessageBox.Show(lstrMessaggio,lstrTitolo,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    DlgRes = MessageBox.Show(lstrMessaggio, lstrTitolo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                endCol = txtRicerca.Text.ToString().Length;
+                _editor.SelectionStart = startLine;
+                _editor.SelectionLength = endLine;
+                _editor.SelectionBackColor = Color.White;
 
-                _editor.SelectionStart = startCol;
-                _editor.SelectionLength = endCol;
+                if (txtRicerca.Text == "" )
+                {
+                    return;
+                }
+
+                startLine = _editor.Text.IndexOf(txtRicerca.Text.ToString(), startLine+1);
+                endLine = txtRicerca.Text.ToString().Length;
+
+                _editor.SelectionStart = startLine;
+                _editor.SelectionLength = endLine;
                 _editor.SelectionBackColor = Color.Gray;
 
 
@@ -95,18 +75,12 @@ namespace VMS
                 return;
             };
 
-            strScript = strScript.Substring(Convert.ToInt16(strScript.IndexOf(txtRicerca.Text) + txtRicerca.Text.Length), strScript.Length - Convert.ToInt16(strScript.IndexOf(txtRicerca.Text) + txtRicerca.Text.Length));
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Dispose();
-        }
-
-        private void txtRicerca_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void frmFind_KeyDown(object sender, KeyEventArgs e)
