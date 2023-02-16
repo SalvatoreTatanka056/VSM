@@ -377,7 +377,7 @@
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 30);
             this.button1.TabIndex = 6;
@@ -432,37 +432,37 @@
             // 
             this.Query.CodeCompleBackColor = System.Drawing.SystemColors.Window;
             this.Query.CodeCompleForeColor = System.Drawing.Color.Black;
-       
             this.Query.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Query.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Query.KeywordsList = new string[] {
-            "{BACKSPACE}",
-            "{BREAK}",
-            "{CAPSLOCK}",
-            "{CLEAR}",
-            "{DELETE}",
-            "{DOWN}",
-            "{END}",
-            "{ENTER}",
-            "{ESCAPE}",
-            "{HELP}",
-            "{HOME}",
-            "{INSERT}",
-            "{LEFT}",
-            "{NUMLOCK}",
-            "{PGDN}",
-            "{PGUP}",
-            "{RETURN}",
-            "{RIGHT}",
-            "{SCROLLLOCK}",
-            "{TAB}",
-            "{UP}",
-            "{F1}",
-            "+",
-            "^",
-            "%"};
+        "{BACKSPACE}",
+        "{BREAK}",
+        "{CAPSLOCK}",
+        "{CLEAR}",
+        "{DELETE}",
+        "{DOWN}",
+        "{END}",
+        "{ENTER}",
+        "{ESCAPE}",
+        "{HELP}",
+        "{HOME}",
+        "{INSERT}",
+        "{LEFT}",
+        "{NUMLOCK}",
+        "{PGDN}",
+        "{PGUP}",
+        "{RETURN}",
+        "{RIGHT}",
+        "{SCROLLLOCK}",
+        "{TAB}",
+        "{UP}",
+        "{F1}",
+        "+",
+        "^",
+        "%"};
             this.Query.Location = new System.Drawing.Point(0, 61);
             this.Query.Name = "Query";
+            this.Query.ShowSelectionMargin = true;
             this.Query.Size = new System.Drawing.Size(1557, 548);
             this.Query.TabIndex = 9;
             this.Query.Text = "";
@@ -481,7 +481,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Virtual SendMessage";
