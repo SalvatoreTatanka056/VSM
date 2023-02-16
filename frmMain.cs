@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Collections;
 using CodeCompletion_CSharp;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace VMS
 {
@@ -101,7 +102,8 @@ namespace VMS
             {
                 int index = -1;
                 int selectStart = this.Query.SelectionStart;
-                Query.SelectionFont = new Font(Query.Font, FontStyle.Bold);
+               // Query.SelectionFont = new Font(Query.Font, FontStyle.Bold);
+               // Query.SelectionFont = new Font(Query.Font, FontStyle.Regular);
 
                 while ((index = this.Query.Text.IndexOf(word, (index + 1))) != -1)
                 {
@@ -670,32 +672,36 @@ namespace VMS
 
         private void Query_TextChanged(object sender, EventArgs e)
         {
-            this.CheckKeyword("BACKSPACE", Color.Blue, 0);
-            this.CheckKeyword("BREAK", Color.Blue, 0);
-            this.CheckKeyword("CAPSLOCK", Color.Blue, 0);
-            this.CheckKeyword("CLEAR", Color.Blue, 0);
-            this.CheckKeyword("DELETE", Color.Blue, 0);
-            this.CheckKeyword("DOWN", Color.Blue, 0);
-            this.CheckKeyword("END", Color.Blue, 0);
-            this.CheckKeyword("ENTER", Color.Blue, 0);
-            this.CheckKeyword("ESCAPE", Color.Blue, 0);
-            this.CheckKeyword("HELP", Color.Blue, 0);
-            this.CheckKeyword("HOME", Color.Blue, 0);
-            this.CheckKeyword("INSERT", Color.Blue, 0);
-            this.CheckKeyword("LEFT", Color.Blue, 0);
-            this.CheckKeyword("NUMLOCK", Color.Blue, 0);
-            this.CheckKeyword("PGDN", Color.Blue, 0);
-            this.CheckKeyword("PGUP", Color.Blue, 0);
-            this.CheckKeyword("RETURN", Color.Blue, 0);
-            this.CheckKeyword("RIGHT", Color.Blue, 0);
-            this.CheckKeyword("SCROLLLOCK", Color.Blue, 0);
-            this.CheckKeyword("TAB", Color.Blue, 0);
-            this.CheckKeyword("UP", Color.Blue, 0);
-            this.CheckKeyword("F1", Color.Blue, 0);
-            this.CheckKeyword("+", Color.Blue, 0);
-            this.CheckKeyword("^", Color.Blue, 0);
-            this.CheckKeyword("%", Color.Blue, 0);
-        
+            this.CheckKeyword("BACKSPACE", Color.Green, 0);
+            this.CheckKeyword("BREAK", Color.Green, 0);
+            this.CheckKeyword("CAPSLOCK", Color.Green, 0);
+            this.CheckKeyword("CLEAR", Color.Green, 0);
+            this.CheckKeyword("DELETE", Color.Green, 0);
+            this.CheckKeyword("DOWN", Color.Green, 0);
+            this.CheckKeyword("END", Color.Green, 0);
+            this.CheckKeyword("ENTER", Color.Green, 0);
+            this.CheckKeyword("ESCAPE", Color.Green, 0);
+            this.CheckKeyword("HELP", Color.Green, 0);
+            this.CheckKeyword("HOME", Color.Green, 0);
+            this.CheckKeyword("INSERT", Color.Green, 0);
+            this.CheckKeyword("LEFT", Color.Green, 0);
+            this.CheckKeyword("NUMLOCK", Color.Green, 0);
+            this.CheckKeyword("PGDN", Color.Green, 0);
+            this.CheckKeyword("PGUP", Color.Green, 0);
+            this.CheckKeyword("RETURN", Color.Green, 0);
+            this.CheckKeyword("RIGHT", Color.Green, 0);
+            this.CheckKeyword("SCROLLLOCK", Color.Green, 0);
+            this.CheckKeyword("TAB", Color.Green, 0);
+            this.CheckKeyword("UP", Color.Green, 0);
+            this.CheckKeyword("F1", Color.Green, 0);
+            this.CheckKeyword("+", Color.Green, 0);
+            this.CheckKeyword("^", Color.Green, 0);
+            this.CheckKeyword("%", Color.Green, 0);
+            this.CheckKeyword("T=", Color.Green, 0);
+            this.CheckKeyword("XY_L", Color.Green, 0);
+            this.CheckKeyword("XY_R", Color.Green, 0);
+
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
