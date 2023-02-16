@@ -38,9 +38,7 @@ E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.AssemblyReference.cache
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.SuggestedBindingRedirects.cache
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\Interop.WMPLib.dll
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.ResolveComReference.cache
-E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.FindAndReplaceForm.resources
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.frmAppInit.resources
-E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.frmFind.resources
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.frmMain.resources
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.Properties.Resources.resources
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.TestFormComponent.resources

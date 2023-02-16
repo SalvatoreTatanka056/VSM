@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.Query = new ICSharpCode.TextEditor.TextEditorControl();
             this.ActionsToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
@@ -69,24 +68,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Query = new CodeCompletion_CSharp.CCRichTextBox();
             this.ActionsToolStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Query
-            // 
-            this.Query.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Query.ForeColor = System.Drawing.Color.Blue;
-            this.Query.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Query.IsReadOnly = false;
-            this.Query.LineViewerStyle = ICSharpCode.TextEditor.Document.LineViewerStyle.FullRow;
-            this.Query.Location = new System.Drawing.Point(0, 54);
-            this.Query.Name = "Query";
-            this.Query.ShowVRuler = false;
-            this.Query.Size = new System.Drawing.Size(1168, 459);
-            this.Query.TabIndex = 2;
-            this.Query.Load += new System.EventHandler(this.Query_Load);
             // 
             // ActionsToolStrip
             // 
@@ -117,27 +105,27 @@
             this.toolStripButton2});
             this.ActionsToolStrip.Location = new System.Drawing.Point(0, 24);
             this.ActionsToolStrip.Name = "ActionsToolStrip";
-            this.ActionsToolStrip.Size = new System.Drawing.Size(1168, 30);
+            this.ActionsToolStrip.Size = new System.Drawing.Size(1557, 37);
             this.ActionsToolStrip.TabIndex = 3;
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 37);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(23, 27);
+            this.toolStripLabel1.Size = new System.Drawing.Size(23, 34);
             this.toolStripLabel1.Text = "    ";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 37);
             // 
             // BtnExtremeStop
             // 
@@ -154,7 +142,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 37);
             // 
             // BtnComment
             // 
@@ -171,7 +159,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 37);
             // 
             // BtnUncomment
             // 
@@ -188,7 +176,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 37);
             // 
             // BtnSearch
             // 
@@ -204,13 +192,13 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 37);
             // 
             // TStxtCicli
             // 
             this.TStxtCicli.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TStxtCicli.Name = "TStxtCicli";
-            this.TStxtCicli.Size = new System.Drawing.Size(100, 30);
+            this.TStxtCicli.Size = new System.Drawing.Size(132, 37);
             this.TStxtCicli.Click += new System.EventHandler(this.TStxtCicli_Click);
             // 
             // BtnBookmark
@@ -230,7 +218,7 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 37);
             // 
             // BtnNext
             // 
@@ -249,12 +237,12 @@
             this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.toolStripTextBox1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(500, 30);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(666, 37);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 37);
             // 
             // toolStripButton1
             // 
@@ -262,7 +250,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 34);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.ToolTipText = "Program";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
@@ -271,19 +259,19 @@
             // 
             this.toolStripTextBox2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 30);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(132, 37);
             this.toolStripTextBox2.ToolTipText = "args";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 37);
             // 
             // toolStripTextBox3
             // 
             this.toolStripTextBox3.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripTextBox3.Name = "toolStripTextBox3";
-            this.toolStripTextBox3.Size = new System.Drawing.Size(100, 30);
+            this.toolStripTextBox3.Size = new System.Drawing.Size(132, 37);
             this.toolStripTextBox3.Text = "0";
             this.toolStripTextBox3.ToolTipText = "Timer";
             // 
@@ -293,7 +281,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 34);
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
             // 
@@ -338,9 +326,10 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
             this.tlbl_posizione_mouse});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 491);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 609);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1168, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1557, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -374,7 +363,8 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1168, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1557, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -387,24 +377,111 @@
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 24);
+            this.button1.Size = new System.Drawing.Size(99, 30);
             this.button1.TabIndex = 6;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "{BACKSPACE} or {BS} BACKSPACE ",
+            "{BREAK} BREAK ",
+            "{CAPSLOCK} CAPS LOCK ",
+            "{CLEAR} CLEAR ",
+            "{DELETE} or {DEL} DELETE or DEL ",
+            "{DOWN} DOWN ARROW ",
+            "{END} END ",
+            "{ENTER} ENTER ",
+            "{ESCAPE} or {ESC} ESC ",
+            "{HELP} HELP ",
+            "{HOME} HOME ",
+            "{INSERT} INS ",
+            "{LEFT} LEFT ARROW ",
+            "{NUMLOCK} NUM LOCK ",
+            "{PGDN} PAGE DOWN ",
+            "{PGUP} PAGE UP ",
+            "{RETURN} RETURN ",
+            "{RIGHT} RIGHT ARROW ",
+            "{SCROLLLOCK} SCROLL LOCK ",
+            "{TAB} TAB ",
+            "{UP} UP ARROW ",
+            "{F1} F1",
+            "+ Shift",
+            "^ Ctrl ",
+            "% Alt "});
+            this.comboBox1.Location = new System.Drawing.Point(99, 1);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(289, 24);
+            this.comboBox1.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(395, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(137, 16);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Scelta Combinazione.";
+            // 
+            // Query
+            // 
+            this.Query.CodeCompleBackColor = System.Drawing.SystemColors.Window;
+            this.Query.CodeCompleForeColor = System.Drawing.Color.Black;
+       
+            this.Query.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Query.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Query.KeywordsList = new string[] {
+            "{BACKSPACE}",
+            "{BREAK}",
+            "{CAPSLOCK}",
+            "{CLEAR}",
+            "{DELETE}",
+            "{DOWN}",
+            "{END}",
+            "{ENTER}",
+            "{ESCAPE}",
+            "{HELP}",
+            "{HOME}",
+            "{INSERT}",
+            "{LEFT}",
+            "{NUMLOCK}",
+            "{PGDN}",
+            "{PGUP}",
+            "{RETURN}",
+            "{RIGHT}",
+            "{SCROLLLOCK}",
+            "{TAB}",
+            "{UP}",
+            "{F1}",
+            "+",
+            "^",
+            "%"};
+            this.Query.Location = new System.Drawing.Point(0, 61);
+            this.Query.Name = "Query";
+            this.Query.Size = new System.Drawing.Size(1557, 548);
+            this.Query.TabIndex = 9;
+            this.Query.Text = "";
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 513);
+            this.ClientSize = new System.Drawing.Size(1557, 631);
+            this.Controls.Add(this.Query);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.Query);
             this.Controls.Add(this.ActionsToolStrip);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Virtual SendMessage";
@@ -421,8 +498,6 @@
         }
 
         #endregion
-
-        private ICSharpCode.TextEditor.TextEditorControl Query;
         private System.Windows.Forms.ToolStrip ActionsToolStrip;
         private System.Windows.Forms.ToolStripButton BtnExtremeStop;
         private System.Windows.Forms.ToolStripButton BtnComment;
@@ -461,5 +536,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private CodeCompletion_CSharp.CCRichTextBox Query;
     }
 }

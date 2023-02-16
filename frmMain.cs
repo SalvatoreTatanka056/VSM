@@ -12,6 +12,7 @@ using ProgramUsage;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Collections;
+using CodeCompletion_CSharp;
 
 namespace VMS
 {
@@ -85,7 +86,7 @@ namespace VMS
             try
             {
                 HighlightingManager.Manager.AddSyntaxModeFileProvider(new FileSyntaxModeProvider("SintaxHighLight\\"));
-                Query.Document.HighlightingStrategy = HighlightingManager.Manager.FindHighlighter("SQL");
+                //Query.Document.HighlightingStrategy = HighlightingManager.Manager.FindHighlighter("SQL");
             }
             catch (Exception ex)
             {
@@ -361,8 +362,9 @@ namespace VMS
 
             if (keyData == (Keys.Control | Keys.F))
             {
-                frmFind frmCerca = new frmFind(Query);
-                frmCerca.Show();
+                //frmFind frmCerca = new frmFind(Query);
+                //Majabella.74
+                //frmCerca.Show();
 
                 return true;
             }
@@ -384,11 +386,11 @@ namespace VMS
         private void BtnFind_Click(object sender, EventArgs e)
         {
 
-            FindAndReplaceForm _findForm = new FindAndReplaceForm();
+            //FindAndReplaceForm _findForm = new FindAndReplaceForm();
 
-            TextEditorControl editor = Query;
+            CCRichTextBox editor = Query;
             if (editor == null) return;
-            _findForm.ShowFor(editor, false);
+           //_findForm.ShowFor(editor, false);
         }
 
         /* Caricamento Form Principale */
@@ -557,10 +559,6 @@ namespace VMS
             }
         }
 
-        private void Query_Load(object sender, EventArgs e)
-        {
-
-        }
 
         public int m_Timer = 2000;
 
@@ -650,6 +648,8 @@ namespace VMS
         {
             Query.Text = "";
         }
+
+
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
