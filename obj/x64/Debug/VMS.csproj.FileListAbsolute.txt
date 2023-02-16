@@ -47,3 +47,5 @@ E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.CoreCompileInputs.cache
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.CopyComplete
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.exe
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.pdb
+E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.FindAndReplaceForm.resources
+E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.frmFind.resources

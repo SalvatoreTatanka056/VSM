@@ -112,11 +112,23 @@
     <Compile Include="CCRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FindAndReplaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindAndReplaceForm.designer.cs">
+      <DependentUpon>FindAndReplaceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAppInit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAppInit.Designer.cs">
       <DependentUpon>frmAppInit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFind.Designer.cs">
+      <DependentUpon>frmFind.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -145,8 +157,14 @@
     <Compile Include="ToolTipControlPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="FindAndReplaceForm.resx">
+      <DependentUpon>FindAndReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAppInit.resx">
       <DependentUpon>frmAppInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFind.resx">
+      <DependentUpon>frmFind.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

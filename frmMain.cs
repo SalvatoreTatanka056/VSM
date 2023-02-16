@@ -114,7 +114,7 @@ namespace VMS
                     this.Query.SelectionColor = Color.Black;
                     Query.SelectionFont = new Font(Query.Font, FontStyle.Regular);
                     this.Query.Select(selectStart, 0);
--
+
                 }
             }
         }
@@ -213,9 +213,6 @@ namespace VMS
                 string[] str = strCompilazione.Split(';');
 
                 Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
-
-
-
 
                 /* importante posizionare i programmi aperti nella stessa posizione
                     * ( oppure non utilizzare i click del mouse per alcune operazioni ) */
@@ -386,9 +383,9 @@ namespace VMS
 
             if (keyData == (Keys.Control | Keys.F))
             {
-                //frmFind frmCerca = new frmFind(Query);
-                //Majabella.74
-                //frmCerca.Show();
+
+                frmFind frmCerca = new frmFind(Query);
+                frmCerca.Show();
 
                 return true;
             }
@@ -410,11 +407,8 @@ namespace VMS
         private void BtnFind_Click(object sender, EventArgs e)
         {
 
-            //FindAndReplaceForm _findForm = new FindAndReplaceForm();
-
-            CCRichTextBox editor = Query;
-            if (editor == null) return;
-           //_findForm.ShowFor(editor, false);
+            FindAndReplaceForm _findForm = new FindAndReplaceForm();
+          
         }
 
         /* Caricamento Form Principale */
