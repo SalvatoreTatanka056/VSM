@@ -102,9 +102,7 @@ namespace VMS
             {
                 int index = -1;
                 int selectStart = this.Query.SelectionStart;
-               // Query.SelectionFont = new Font(Query.Font, FontStyle.Bold);
-               // Query.SelectionFont = new Font(Query.Font, FontStyle.Regular);
-
+        
                 while ((index = this.Query.Text.IndexOf(word, (index + 1))) != -1)
                 {
                     this.Query.Select((index + startIndex), word.Length);
@@ -116,7 +114,6 @@ namespace VMS
                     this.Query.SelectionColor = Color.Black;
                     Query.SelectionFont = new Font(Query.Font, FontStyle.Regular);
                     this.Query.Select(selectStart, 0);
-
 
                 }
             }
