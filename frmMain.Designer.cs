@@ -43,7 +43,6 @@
             this.BtnSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.TStxtCicli = new System.Windows.Forms.ToolStripTextBox();
-            this.BtnBookmark = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.BtnNext = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -93,7 +92,6 @@
             this.BtnSearch,
             this.toolStripSeparator4,
             this.TStxtCicli,
-            this.BtnBookmark,
             this.toolStripSeparator5,
             this.BtnNext,
             this.toolStripTextBox1,
@@ -201,20 +199,6 @@
             this.TStxtCicli.Size = new System.Drawing.Size(100, 30);
             this.TStxtCicli.Click += new System.EventHandler(this.TStxtCicli_Click);
             // 
-            // BtnBookmark
-            // 
-            this.BtnBookmark.AutoSize = false;
-            this.BtnBookmark.CheckOnClick = true;
-            this.BtnBookmark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.BtnBookmark.Enabled = false;
-            this.BtnBookmark.Image = ((System.Drawing.Image)(resources.GetObject("BtnBookmark.Image")));
-            this.BtnBookmark.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BtnBookmark.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnBookmark.Name = "BtnBookmark";
-            this.BtnBookmark.Size = new System.Drawing.Size(28, 28);
-            this.BtnBookmark.ToolTipText = "Toggle bookmark(F2)";
-            this.BtnBookmark.Click += new System.EventHandler(this.BtnBookmark_Click);
-            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -261,6 +245,7 @@
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(100, 30);
             this.toolStripTextBox2.ToolTipText = "args";
+            this.toolStripTextBox2.Visible = false;
             // 
             // toolStripSeparator6
             // 
@@ -411,7 +396,7 @@
             "^ Ctrl ",
             "% Alt "});
             this.comboBox1.Location = new System.Drawing.Point(74, 1);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(218, 21);
             this.comboBox1.TabIndex = 7;
@@ -459,7 +444,7 @@
         "^",
         "%"};
             this.Query.Location = new System.Drawing.Point(0, 54);
-            this.Query.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Query.Margin = new System.Windows.Forms.Padding(2);
             this.Query.Name = "Query";
             this.Query.ShowSelectionMargin = true;
             this.Query.Size = new System.Drawing.Size(1168, 437);
@@ -502,7 +487,6 @@
         private System.Windows.Forms.ToolStripButton BtnComment;
         private System.Windows.Forms.ToolStripButton BtnUncomment;
         private System.Windows.Forms.ToolStripButton BtnSearch;
-        private System.Windows.Forms.ToolStripButton BtnBookmark;
         private System.Windows.Forms.ToolStripButton BtnNext;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
