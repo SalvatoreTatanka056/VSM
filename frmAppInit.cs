@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace VMS
+namespace VSM
 {
     public partial class frmAppInit : Form
     {

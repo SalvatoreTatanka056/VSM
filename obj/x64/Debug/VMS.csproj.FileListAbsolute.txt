@@ -29,16 +29,18 @@ C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE\obj\x64\Debug\VMS.csproj.CoreCompileI
 C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE\obj\x64\Debug\VMS.csproj.CopyComplete
 C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE\obj\x64\Debug\VMS.exe
 C:\Users\CIT094WPC\Desktop\MacroIE\MacroIE\obj\x64\Debug\VMS.pdb
+E:\src\c#\vsm_V6\vsm\bin\x64\Debug\VMS.exe.config
 E:\src\c#\vsm_V6\vsm\bin\x64\Debug\VMS.exe
 E:\src\c#\vsm_V6\vsm\bin\x64\Debug\VMS.pdb
-E:\src\c#\vsm_V6\vsm\bin\x64\Debug\ICSharpCode.TextEditor.dll
-E:\src\c#\vsm_V6\vsm\bin\x64\Debug\VMS.exe.config
 E:\src\c#\vsm_V6\vsm\bin\x64\Debug\Gma.UserActivityMonitor.dll
+E:\src\c#\vsm_V6\vsm\bin\x64\Debug\ICSharpCode.TextEditor.dll
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.AssemblyReference.cache
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.SuggestedBindingRedirects.cache
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\Interop.WMPLib.dll
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.ResolveComReference.cache
+E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.FindAndReplaceForm.resources
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.frmAppInit.resources
+E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.frmFind.resources
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.frmMain.resources
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.Properties.Resources.resources
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.TestFormComponent.resources
@@ -47,5 +49,3 @@ E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.CoreCompileInputs.cache
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.csproj.CopyComplete
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.exe
 E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.pdb
-E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.FindAndReplaceForm.resources
-E:\src\c#\vsm_V6\vsm\obj\x64\Debug\VMS.frmFind.resources

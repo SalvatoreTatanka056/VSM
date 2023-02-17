@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using CodeCompletion_CSharp;
 
-namespace VMS
+namespace VSM
 {
 	public partial class FindAndReplaceForm : Form
 	{

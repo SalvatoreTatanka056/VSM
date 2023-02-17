@@ -1,4 +1,4 @@
-﻿namespace VMS.Properties {
+﻿namespace VSM.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

@@ -1,4 +1,4 @@
-﻿namespace VMS
+﻿namespace VSM
 {
 	partial class FindAndReplaceForm
 	{

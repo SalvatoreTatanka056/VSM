@@ -6,7 +6,7 @@ using System.Threading;
 using System.IO;
 using ICSharpCode.TextEditor;
 using System.Diagnostics;
-using VMS.Properties;
+using VSM.Properties;
 using System.Runtime.InteropServices;
 using ProgramUsage;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Collections;
 using CodeCompletion_CSharp;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace VMS
+namespace VSM
 {
     public partial class frmMain : Form
     {

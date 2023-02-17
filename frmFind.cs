@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using CodeCompletion_CSharp;
 using ICSharpCode.TextEditor;
 
-namespace VMS
+namespace VSM
 {
     public partial class frmFind : Form
     {

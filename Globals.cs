@@ -4,7 +4,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace VMS
+namespace VSM
 {
 	public static class Globals
 	{
