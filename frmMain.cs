@@ -86,10 +86,7 @@ namespace VSM
             
             try
             {
-                HighlightingManager.Manager.AddSyntaxModeFileProvider(new FileSyntaxModeProvider("SintaxHighLight\\"));
-                //Query.Document.HighlightingStrategy = HighlightingManager.Manager.FindHighlighter("SQL");
-
-                mouse = false;
+                 mouse = false;
                 tlbl_posizione_mouse.BackColor = Color.Red;
                 tlbl_posizione_mouse.Invalidate();
             }
