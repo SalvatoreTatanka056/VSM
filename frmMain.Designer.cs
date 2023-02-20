@@ -407,9 +407,9 @@
             this.label1.Location = new System.Drawing.Point(296, 6);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Scelta Combinazione.";
+            this.label1.Text = "Aiuto.";
             // 
             // Query
             // 
