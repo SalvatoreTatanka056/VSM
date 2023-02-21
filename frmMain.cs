@@ -94,7 +94,6 @@ namespace VSM
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void CheckKeyword(string word, Color color, int startIndex)
@@ -141,17 +140,13 @@ namespace VSM
         /// <param name="e"></param>
         private void BtnNext_Click(object sender, EventArgs e)
         {
-
             frmMain.ActiveForm.WindowState = FormWindowState.Minimized;
             strMacro = Query.Text;
 
             if (strMacro == "")
                 return;
-
             /* Esecuzione thread per esecuzione comandi */
             EseguiMacro();
-
-
         }
 
         /// <summary>
@@ -179,27 +174,15 @@ namespace VSM
 
             for (int i = 0; i < _iCicli; i++)
             {
-
                 if (toolStripTextBox1.Text.Length > 0)
                 {
-                    //Query.Text = "";
-                    //if (strMacro.Substring(0, 2) != "T=")
-                    //{
-                    //    strMacro = strMacro.Insert(0, "T=5000;\n");
-
-                    //}
-
-                    //Query.Text = strMacro;
-
                     try
                     {
-
                         Process.Start(toolStripTextBox1.Text);
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
-
                     }
 
                 }
@@ -261,11 +244,7 @@ namespace VSM
 
                     Application.DoEvents();
                 }
-
-
                 string tmp_operation = string.Format("Terminato {0}/{1}", i + 1, _iCicli);
-
-
                 notifyIcon1.ShowBalloonTip(1000, "Script", tmp_operation, ToolTipIcon.Info);
                 // pblnThreadTray = false;
             }
@@ -381,7 +360,6 @@ namespace VSM
         /// <returns></returns>
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-
             if (keyData == (Keys.Control | Keys.F))
             {
 
@@ -471,7 +449,6 @@ namespace VSM
         private void BtnBookmark_Click(object sender, EventArgs e)
         {
             lblnActive = true;
-
             if (mouse)
             {
                 MouseHook.stop();
@@ -484,7 +461,6 @@ namespace VSM
                     int foundS = Query.Text.LastIndexOf("XY_");
                     Query.Text = Query.Text.Remove(foundS);
                     Query.Invalidate();
-
                 }
             }
             else
@@ -500,19 +476,14 @@ namespace VSM
                 }
                 tlbl_posizione_mouse.BackColor = Color.GreenYellow;
                 tlbl_posizione_mouse.Invalidate();
-
             }
-
             lblnActive = false;
-
         }
 
         delegate void AppendTextDelegate(string text);
         public void appendText(string s)
         {
-
             tlbl_posizione_mouse.Text = s;
-
         }
 
         private void Event(object sender, EventArgs e)
@@ -613,14 +584,11 @@ namespace VSM
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
             pblnThreadTray = false;
             childThread2.Abort();
             childThread1.Abort();
             notifyIcon1.Visible = false;
-
             frmMain.ActiveForm.WindowState = FormWindowState.Normal;
-
             _iCicli = 0;
         }
 
@@ -641,7 +609,6 @@ namespace VSM
                     int foundS = Query.Text.LastIndexOf("XY_");
                     Query.Text = Query.Text.Remove(foundS);
                     Query.Invalidate();
-
                 }
             }
             else
@@ -653,7 +620,6 @@ namespace VSM
                 {
                     first = false;
                     MouseHook.MouseAction += new EventHandler(Event);
-
                 }
                 tlbl_posizione_mouse.BackColor = Color.GreenYellow;
                 tlbl_posizione_mouse.Invalidate();
@@ -670,8 +636,6 @@ namespace VSM
 
         private void Query_TextChanged(object sender, EventArgs e)
         {
-
-
             this.CheckKeyword("BACKSPACE", Color.Green, 0);
             this.CheckKeyword("BREAK", Color.Green, 0);
             this.CheckKeyword("CAPSLOCK", Color.Green, 0);
@@ -700,9 +664,6 @@ namespace VSM
             this.CheckKeyword("T=", Color.Green, 0);
             this.CheckKeyword("XY_L", Color.Green, 0);
             this.CheckKeyword("XY_R", Color.Green, 0);
-
-
-
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
