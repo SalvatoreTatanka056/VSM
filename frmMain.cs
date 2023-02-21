@@ -83,10 +83,10 @@ namespace VSM
         public frmMain()
         {
             InitializeComponent();
-            
+
             try
             {
-                 mouse = false;
+                mouse = false;
                 tlbl_posizione_mouse.BackColor = Color.Red;
                 tlbl_posizione_mouse.Invalidate();
             }
@@ -103,7 +103,7 @@ namespace VSM
             {
                 int index = -1;
                 int selectStart = this.Query.SelectionStart;
-        
+
                 while ((index = this.Query.Text.IndexOf(word, (index + 1))) != -1)
                 {
                     this.Query.Select((index + startIndex), word.Length);
@@ -177,10 +177,10 @@ namespace VSM
                 }
             }
 
-            for (int i = 0 ; i < _iCicli ; i++)
+            for (int i = 0; i < _iCicli; i++)
             {
-               
-                if(toolStripTextBox1.Text.Length > 0)
+
+                if (toolStripTextBox1.Text.Length > 0)
                 {
                     //Query.Text = "";
                     //if (strMacro.Substring(0, 2) != "T=")
@@ -197,11 +197,11 @@ namespace VSM
                         Process.Start(toolStripTextBox1.Text);
                     }
                     catch (Exception ex)
-                    { 
+                    {
                         MessageBox.Show(ex.Message);
-                        
+
                     }
-                   
+
                 }
 
                 /* Compila Script */
@@ -221,27 +221,27 @@ namespace VSM
                 {
 
                     /* Gestione Timer ... */
-                    if (strSendMessage.Length > 1 && strSendMessage.Substring(0 , 2) == "T=")
+                    if (strSendMessage.Length > 1 && strSendMessage.Substring(0, 2) == "T=")
                     {
                         string strTimer = strSendMessage.Substring(2).ToString();
                         Thread.Sleep(Convert.ToInt32(strTimer));
 
                     }
-                    else if (strSendMessage.Length > 3 && strSendMessage.Substring(0 , 4) == "XY_L"/*strSendMessage.IndexOf("XY") != -1*/)
+                    else if (strSendMessage.Length > 3 && strSendMessage.Substring(0, 4) == "XY_L"/*strSendMessage.IndexOf("XY") != -1*/)
                     {
                         string[] strCoordXY = strSendMessage.Substring(5).Split('-');
                         m_intX = Convert.ToInt16(strCoordXY[0]);
                         m_intY = Convert.ToInt16(strCoordXY[1]);
-                        LeftMouseClick(m_intX , m_intY);
+                        LeftMouseClick(m_intX, m_intY);
                         Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
                     }
-                    else if (strSendMessage.Length > 3 && strSendMessage.Substring(0 , 4) == "XY_R"/*strSendMessage.IndexOf("XY") != -1*/)
+                    else if (strSendMessage.Length > 3 && strSendMessage.Substring(0, 4) == "XY_R"/*strSendMessage.IndexOf("XY") != -1*/)
                     {
 
                         string[] strCoordXY = strSendMessage.Substring(5).Split('-');
                         m_intX = Convert.ToInt16(strCoordXY[0]);
                         m_intY = Convert.ToInt16(strCoordXY[1]);
-                        RightMouseClick(m_intX , m_intY);
+                        RightMouseClick(m_intX, m_intY);
                         Thread.Sleep(Convert.ToInt16(toolStripTextBox3.Text));
                     }
                     else
@@ -255,19 +255,19 @@ namespace VSM
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
-                            
+
                         }
                     }
 
                     Application.DoEvents();
                 }
-           
+
 
                 string tmp_operation = string.Format("Terminato {0}/{1}", i + 1, _iCicli);
 
 
                 notifyIcon1.ShowBalloonTip(1000, "Script", tmp_operation, ToolTipIcon.Info);
-               // pblnThreadTray = false;
+                // pblnThreadTray = false;
             }
 
             notifyIcon1.ShowBalloonTip(1000, "Script Terminato...", "Script Terminato...", ToolTipIcon.Info);
@@ -332,7 +332,7 @@ namespace VSM
                 System.IO.StreamReader sr = new
                    System.IO.StreamReader(openFileDialog1.FileName);
                 try
-                { 
+                {
 
                     Query.Text = sr.ReadToEnd();
                     sr.Close();
@@ -409,7 +409,7 @@ namespace VSM
         {
 
             FindAndReplaceForm _findForm = new FindAndReplaceForm();
-          
+
         }
 
         /* Caricamento Form Principale */
@@ -422,7 +422,7 @@ namespace VSM
             {
                 if (arg.IndexOf(".vsm") != -1)
                 {
-                    Query.Text = File.ReadAllText(arg );
+                    Query.Text = File.ReadAllText(arg);
                     /* Thread.Sleep(1000);
                      BtnNext_Click(BtnNext, new EventArgs());*/
                 }
@@ -455,7 +455,7 @@ namespace VSM
         /* Dispose di Tutti gli Oggetti e scaricamento della frmMain */
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(gHook != null) gHook.unhook();
+            if (gHook != null) gHook.unhook();
             MouseHook.stop();
             mouse = false;
             UnhookWinEvent(hhook);
@@ -479,11 +479,11 @@ namespace VSM
                 tlbl_posizione_mouse.BackColor = Color.Red;
                 tlbl_posizione_mouse.Invalidate();
 
-                if(Query.Text.Contains("XY_"))
+                if (Query.Text.Contains("XY_"))
                 {
                     int foundS = Query.Text.LastIndexOf("XY_");
                     Query.Text = Query.Text.Remove(foundS);
-                    Query.Invalidate(); 
+                    Query.Invalidate();
 
                 }
             }
@@ -510,9 +510,9 @@ namespace VSM
         delegate void AppendTextDelegate(string text);
         public void appendText(string s)
         {
-          
-            tlbl_posizione_mouse.Text = s ;
-          
+
+            tlbl_posizione_mouse.Text = s;
+
         }
 
         private void Event(object sender, EventArgs e)
@@ -524,9 +524,9 @@ namespace VSM
             {
                 case "WM_LBUTTONDOWN":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
-                
+
                     Query.Text = Query.Text + string.Format("XY_L {0}-{1};\n", temp.pt.x, temp.pt.y);
-                  
+
                     break;
                 case "WM_LBUTTONUP":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
@@ -536,9 +536,9 @@ namespace VSM
                     break;
                 case "WM_RBUTTONDOWN":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
-                 
+
                     Query.Text = Query.Text + string.Format("XY_R {0}-{1};\n", temp.pt.x, temp.pt.y);
-                    
+
                     break;
                 case "WM_MOUSEWHEEL":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
@@ -671,7 +671,7 @@ namespace VSM
         private void Query_TextChanged(object sender, EventArgs e)
         {
 
-           
+
             this.CheckKeyword("BACKSPACE", Color.Green, 0);
             this.CheckKeyword("BREAK", Color.Green, 0);
             this.CheckKeyword("CAPSLOCK", Color.Green, 0);
@@ -700,7 +700,7 @@ namespace VSM
             this.CheckKeyword("T=", Color.Green, 0);
             this.CheckKeyword("XY_L", Color.Green, 0);
             this.CheckKeyword("XY_R", Color.Green, 0);
-       
+
 
 
         }
