@@ -495,9 +495,7 @@ namespace VSM
             {
                 case "WM_LBUTTONDOWN":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
-
                     Query.Text = Query.Text + string.Format("XY_L {0}-{1};\n", temp.pt.x, temp.pt.y);
-
                     break;
                 case "WM_LBUTTONUP":
                     appendText("Mouse Event Detected : " + temp.MouseAction + "\t Position : " + temp.pt.x + " " + temp.pt.y);
@@ -594,9 +592,7 @@ namespace VSM
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             lblnActive = true;
-
             if (mouse)
             {
                 MouseHook.stop();
