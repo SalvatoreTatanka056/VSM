@@ -41,7 +41,7 @@ namespace VSM
                 for (int i = 0; i < 100; i++)
                 {
                     progressBar1.Value = i;
-                    Thread.Sleep(30);
+                    Thread.Sleep(20);
                 }
 
                 blnPresentazione = false;

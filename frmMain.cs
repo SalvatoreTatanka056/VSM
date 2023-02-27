@@ -405,29 +405,6 @@ namespace VSM
                      BtnNext_Click(BtnNext, new EventArgs());*/
                 }
             }
-
-            /* Caricament o Icone Per Animazione in tray */
-            images = new Icon[8];
-            images[0] = new Icon("Rotate1.ico");
-            images[1] = new Icon("Rotate2.ico");
-            images[2] = new Icon("Rotate3.ico");
-            images[3] = new Icon("Rotate4.ico");
-            images[4] = new Icon("Rotate5.ico");
-            images[5] = new Icon("Rotate6.ico");
-            images[6] = new Icon("Rotate7.ico");
-            images[7] = new Icon("Rotate8.ico");
-
-            //pblnThreadTray = true;
-            notifyIcon1.Icon = images[0];
-
-            /* Gestione Parametri di Default */
-            toolStripTextBox3.Text = "1000";
-            TStxtCicli.Text = "1";
-
-            /* Disabilita di controlli dei parametri */
-            TStxtCicli.Enabled = false;
-            toolStripTextBox3.Enabled = false;
-
         }
 
         /* Dispose di Tutti gli Oggetti e scaricamento della frmMain */

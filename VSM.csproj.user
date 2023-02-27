@@ -14,4 +14,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <StartAction>Project</StartAction>
   </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
 </Project>
