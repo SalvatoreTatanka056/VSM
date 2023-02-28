@@ -159,19 +159,14 @@ namespace VSM
             if (TStxtCicli.Text != "")
                 _iCicli = Convert.ToInt16(TStxtCicli.Text);
 
-            if (toolStripTextBox1.Text == "")
+            dlg = MessageBox.Show("Attenzione non si è scelto nessun programma da eseguire!\n i comandi verranno eseguiti comunque\n si vuole continuare?", "Nessun programma scelto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dlg == DialogResult.No)
             {
-                dlg = MessageBox.Show("Attenzione non si è scelto nessun programma da eseguire!\n i comandi verranno eseguiti comunque\n si vuole continuare?", "Nessun programma scelto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (dlg == DialogResult.No)
-                {
-                    notifyIcon1.Visible = false;
-                    notifyIcon1.ShowBalloonTip(1000, "Script", "Script Terminato", ToolTipIcon.Info);
-                    pblnThreadTray = false;
-                    return;
-                }
+       
+                return;
             }
-
+          
             for (int i = 0; i < _iCicli; i++)
             {
                 if (toolStripTextBox1.Text.Length > 0)
@@ -249,7 +244,6 @@ namespace VSM
                 // pblnThreadTray = false;
             }
 
-            notifyIcon1.ShowBalloonTip(1000, "Script Terminato...", "Script Terminato...", ToolTipIcon.Info);
             MessageBox.Show("Script Terminato...");
         }
 
@@ -393,6 +387,8 @@ namespace VSM
         /* Caricamento Form Principale */
         private void frmMain_Load(object sender, EventArgs e)
         {
+            TStxtCicli.Text = "1";
+            TStxtCicli.Enabled= false;
 
             string[] args = Environment.GetCommandLineArgs();
 
