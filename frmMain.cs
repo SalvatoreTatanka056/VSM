@@ -98,24 +98,35 @@ namespace VSM
 
         private void CheckKeyword(string word, Color color, int startIndex)
         {
-            if (this.Query.Text.Contains(word))
+            try
             {
-                int index = -1;
-                int selectStart = this.Query.SelectionStart;
 
-                while ((index = this.Query.Text.IndexOf(word, (index + 1))) != -1)
+
+
+                if (this.Query.Text.Contains(word))
                 {
-                    this.Query.Select((index + startIndex), word.Length);
-                    this.Query.SelectionColor = color;
-                    //Query.SelectionFont = Query.Font;
-                    Query.SelectionFont = new Font(Query.Font, FontStyle.Bold);
-                    this.Query.Select((index + startIndex), word.Length);
-                    this.Query.Select(selectStart, 0);
-                    this.Query.SelectionColor = Color.Black;
-                    Query.SelectionFont = new Font(Query.Font, FontStyle.Regular);
-                    this.Query.Select(selectStart, 0);
+                    int index = -1;
+                    int selectStart = this.Query.SelectionStart;
 
+                    while ((index = this.Query.Text.IndexOf(word, (index + 1))) != -1)
+                    {
+                        this.Query.Select((index + startIndex), word.Length);
+                        this.Query.SelectionColor = color;
+                        //Query.SelectionFont = Query.Font;
+                        Query.SelectionFont = new Font(Query.Font, FontStyle.Bold);
+                        this.Query.Select((index + startIndex), word.Length);
+                        this.Query.Select(selectStart, 0);
+                        this.Query.SelectionColor = Color.Black;
+                        Query.SelectionFont = new Font(Query.Font, FontStyle.Regular);
+                        this.Query.Select(selectStart, 0);
+
+                    }
                 }
+
+            }
+            catch(Exception)
+            {
+                throw;
             }
         }
 
